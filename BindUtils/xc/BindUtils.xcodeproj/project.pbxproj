@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		697AABEE1370B4A700B7FA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697AABED1370B4A700B7FA6B /* Foundation.framework */; };
+		69AE72E0138F30D0002F84C0 /* Unmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AE72DF138F30D0002F84C0 /* Unmarshaller.h */; };
+		69AF7D3C1370F274006E1226 /* DataBinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69AF7D341370F274006E1226 /* DataBinder.cpp */; };
+		69AF7D3D1370F274006E1226 /* DataBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7D351370F274006E1226 /* DataBinder.h */; };
+		69AF7D3E1370F274006E1226 /* JsonStreamParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69AF7D361370F274006E1226 /* JsonStreamParser.cpp */; };
+		69AF7D3F1370F274006E1226 /* JsonStreamParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7D371370F274006E1226 /* JsonStreamParser.h */; };
+		69AF7D401370F274006E1226 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69AF7D381370F274006E1226 /* Path.cpp */; };
+		69AF7D411370F274006E1226 /* Path.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7D391370F274006E1226 /* Path.h */; };
+		69AF7D421370F274006E1226 /* XmlStreamParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69AF7D3A1370F274006E1226 /* XmlStreamParser.cpp */; };
+		69AF7D431370F274006E1226 /* XmlStreamParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7D3B1370F274006E1226 /* XmlStreamParser.h */; };
+		69C73F4413C6018500D62C69 /* DynaModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C73F4213C6018500D62C69 /* DynaModel.cpp */; };
+		69C73F4513C6018500D62C69 /* DynaModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C73F4313C6018500D62C69 /* DynaModel.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtBindUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		697AABED1370B4A700B7FA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		697AABF11370B4A700B7FA6B /* BindUtils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BindUtils-Prefix.pch"; sourceTree = "<group>"; };
+		69AE72DF138F30D0002F84C0 /* Unmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unmarshaller.h; sourceTree = "<group>"; };
+		69AF7D341370F274006E1226 /* DataBinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBinder.cpp; sourceTree = "<group>"; };
+		69AF7D351370F274006E1226 /* DataBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBinder.h; sourceTree = "<group>"; };
+		69AF7D361370F274006E1226 /* JsonStreamParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonStreamParser.cpp; sourceTree = "<group>"; };
+		69AF7D371370F274006E1226 /* JsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonStreamParser.h; sourceTree = "<group>"; };
+		69AF7D381370F274006E1226 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
+		69AF7D391370F274006E1226 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		69AF7D3A1370F274006E1226 /* XmlStreamParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XmlStreamParser.cpp; sourceTree = "<group>"; };
+		69AF7D3B1370F274006E1226 /* XmlStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlStreamParser.h; sourceTree = "<group>"; };
+		69C73F4213C6018500D62C69 /* DynaModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DynaModel.cpp; sourceTree = "<group>"; };
+		69C73F4313C6018500D62C69 /* DynaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynaModel.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		697AABE71370B4A700B7FA6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697AABEE1370B4A700B7FA6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		695474DB1370DAA40044A1A5 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				697AABF11370B4A700B7FA6B /* BindUtils-Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		697AABDF1370B4A700B7FA6B = {
+			isa = PBXGroup;
+			children = (
+				69AF7D331370F274006E1226 /* Sources */,
+				695474DB1370DAA40044A1A5 /* Other Sources */,
+				697AABEC1370B4A700B7FA6B /* Frameworks */,
+				697AABEB1370B4A700B7FA6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		697AABEB1370B4A700B7FA6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		697AABEC1370B4A700B7FA6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				697AABED1370B4A700B7FA6B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69AF7D331370F274006E1226 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				69AF7D391370F274006E1226 /* Path.h */,
+				69AF7D381370F274006E1226 /* Path.cpp */,
+				69AF7D351370F274006E1226 /* DataBinder.h */,
+				69AF7D341370F274006E1226 /* DataBinder.cpp */,
+				69C73F4313C6018500D62C69 /* DynaModel.h */,
+				69C73F4213C6018500D62C69 /* DynaModel.cpp */,
+				69AF7D3B1370F274006E1226 /* XmlStreamParser.h */,
+				69AF7D3A1370F274006E1226 /* XmlStreamParser.cpp */,
+				69AF7D371370F274006E1226 /* JsonStreamParser.h */,
+				69AF7D361370F274006E1226 /* JsonStreamParser.cpp */,
+				69AE72DF138F30D0002F84C0 /* Unmarshaller.h */,
+			);
+			name = Sources;
+			path = BindUtils.xcodeproj/../../src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		697AABE81370B4A700B7FA6B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AF7D3D1370F274006E1226 /* DataBinder.h in Headers */,
+				69AF7D3F1370F274006E1226 /* JsonStreamParser.h in Headers */,
+				69AF7D411370F274006E1226 /* Path.h in Headers */,
+				69AF7D431370F274006E1226 /* XmlStreamParser.h in Headers */,
+				69AE72E0138F30D0002F84C0 /* Unmarshaller.h in Headers */,
+				69C73F4513C6018500D62C69 /* DynaModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		697AABE91370B4A700B7FA6B /* BindUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "BindUtils" */;
+			buildPhases = (
+				697AABE61370B4A700B7FA6B /* Sources */,
+				697AABE71370B4A700B7FA6B /* Frameworks */,
+				697AABE81370B4A700B7FA6B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BindUtils;
+			productName = BindUtils;
+			productReference = 697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		697AABE11370B4A700B7FA6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Fidelity Investments";
+			};
+			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "BindUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 697AABDF1370B4A700B7FA6B;
+			productRefGroup = 697AABEB1370B4A700B7FA6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				697AABE91370B4A700B7FA6B /* BindUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		697AABE61370B4A700B7FA6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AF7D3C1370F274006E1226 /* DataBinder.cpp in Sources */,
+				69AF7D3E1370F274006E1226 /* JsonStreamParser.cpp in Sources */,
+				69AF7D401370F274006E1226 /* Path.cpp in Sources */,
+				69AF7D421370F274006E1226 /* XmlStreamParser.cpp in Sources */,
+				69C73F4413C6018500D62C69 /* DynaModel.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		697AABF21370B4A700B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		697AABF31370B4A700B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		697AABF51370B4A700B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BindUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					UNIX,
+					LOG_LEVEL_WARN,
+				);
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtBindUtils;
+			};
+			name = Debug;
+		};
+		697AABF61370B4A700B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BindUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					UNIX,
+					LOG_LEVEL_WARN,
+				);
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtBindUtils;
+			};
+			name = Release;
+		};
+		C31E55E31469D00E00CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = ProdCandidate;
+		};
+		C31E55E41469D00E00CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BindUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtBindUtils;
+			};
+			name = ProdCandidate;
+		};
+		C37DCEB3146851E200B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = AppStore;
+		};
+		C37DCEB4146851E200B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/BindUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtBindUtils;
+			};
+			name = AppStore;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "BindUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AABF21370B4A700B7FA6B /* Debug */,
+				697AABF31370B4A700B7FA6B /* Release */,
+				C37DCEB3146851E200B540AC /* AppStore */,
+				C31E55E31469D00E00CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "BindUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AABF51370B4A700B7FA6B /* Debug */,
+				697AABF61370B4A700B7FA6B /* Release */,
+				C37DCEB4146851E200B540AC /* AppStore */,
+				C31E55E41469D00E00CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 697AABE11370B4A700B7FA6B /* Project object */;
+}

@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		697AAC061370B4BF00B7FA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697AAC051370B4BF00B7FA6B /* Foundation.framework */; };
+		69A165D813897FCA0036C65A /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165D513897FCA0036C65A /* file.h */; };
+		69A165DA13897FCA0036C65A /* uuid.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165D713897FCA0036C65A /* uuid.h */; };
+		69A165E713897FEF0036C65A /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165DD13897FEF0036C65A /* array.h */; };
+		69A165E813897FEF0036C65A /* devrand.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165DE13897FEF0036C65A /* devrand.h */; };
+		69A165E913897FEF0036C65A /* devrandom.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165DF13897FEF0036C65A /* devrandom.h */; };
+		69A165EA13897FEF0036C65A /* iofwd.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E013897FEF0036C65A /* iofwd.h */; };
+		69A165EB13897FEF0036C65A /* iostate.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E113897FEF0036C65A /* iostate.h */; };
+		69A165EC13897FEF0036C65A /* randomstream.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E213897FEF0036C65A /* randomstream.h */; };
+		69A165ED13897FEF0036C65A /* unique.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E313897FEF0036C65A /* unique.h */; };
+		69A165EE13897FEF0036C65A /* uuid.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E413897FEF0036C65A /* uuid.h */; };
+		69A165EF13897FEF0036C65A /* winrand.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E513897FEF0036C65A /* winrand.h */; };
+		69A165F013897FEF0036C65A /* winrandom.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A165E613897FEF0036C65A /* winrandom.h */; };
+		69AF7D011370F206006E1226 /* commandline.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD21370F206006E1226 /* commandline.h */; };
+		69AF7D021370F206006E1226 /* criticalsection.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD31370F206006E1226 /* criticalsection.h */; };
+		69AF7D031370F206006E1226 /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD41370F206006E1226 /* debug.h */; };
+		69AF7D041370F206006E1226 /* exception.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD51370F206006E1226 /* exception.h */; };
+		69AF7D051370F206006E1226 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD61370F206006E1226 /* macros.h */; };
+		69AF7D061370F206006E1226 /* number.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD71370F206006E1226 /* number.h */; };
+		69AF7D071370F206006E1226 /* unix.h in Headers */ = {isa = PBXBuildFile; fileRef = 69AF7CD81370F206006E1226 /* unix.h */; };
+		69B5902913F98EAF00A0721D /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B5902813F98EAF00A0721D /* log.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		697AAC021370B4BF00B7FA6B /* libAtSystemUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtSystemUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		697AAC051370B4BF00B7FA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		697AAC091370B4BF00B7FA6B /* SystemUtils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SystemUtils-Prefix.pch"; sourceTree = "<group>"; };
+		69A165D513897FCA0036C65A /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		69A165D713897FCA0036C65A /* uuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uuid.h; sourceTree = "<group>"; };
+		69A165DD13897FEF0036C65A /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = array.h; path = ooid/array.h; sourceTree = "<group>"; };
+		69A165DE13897FEF0036C65A /* devrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = devrand.h; path = ooid/devrand.h; sourceTree = "<group>"; };
+		69A165DF13897FEF0036C65A /* devrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = devrandom.h; path = ooid/devrandom.h; sourceTree = "<group>"; };
+		69A165E013897FEF0036C65A /* iofwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iofwd.h; path = ooid/iofwd.h; sourceTree = "<group>"; };
+		69A165E113897FEF0036C65A /* iostate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iostate.h; path = ooid/iostate.h; sourceTree = "<group>"; };
+		69A165E213897FEF0036C65A /* randomstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randomstream.h; path = ooid/randomstream.h; sourceTree = "<group>"; };
+		69A165E313897FEF0036C65A /* unique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unique.h; path = ooid/unique.h; sourceTree = "<group>"; };
+		69A165E413897FEF0036C65A /* uuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uuid.h; path = ooid/uuid.h; sourceTree = "<group>"; };
+		69A165E513897FEF0036C65A /* winrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = winrand.h; path = ooid/winrand.h; sourceTree = "<group>"; };
+		69A165E613897FEF0036C65A /* winrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = winrandom.h; path = ooid/winrandom.h; sourceTree = "<group>"; };
+		69AF7CD21370F206006E1226 /* commandline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commandline.h; sourceTree = "<group>"; };
+		69AF7CD31370F206006E1226 /* criticalsection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = criticalsection.h; sourceTree = "<group>"; };
+		69AF7CD41370F206006E1226 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		69AF7CD51370F206006E1226 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exception.h; sourceTree = "<group>"; };
+		69AF7CD61370F206006E1226 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
+		69AF7CD71370F206006E1226 /* number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = number.h; sourceTree = "<group>"; };
+		69AF7CD81370F206006E1226 /* unix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unix.h; sourceTree = "<group>"; };
+		69B5902813F98EAF00A0721D /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		697AABFF1370B4BF00B7FA6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697AAC061370B4BF00B7FA6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		697AABF71370B4BF00B7FA6B = {
+			isa = PBXGroup;
+			children = (
+				69AF7CD01370F206006E1226 /* Sources */,
+				697AAC1D1370B5AE00B7FA6B /* Other Sources */,
+				697AAC041370B4BF00B7FA6B /* Frameworks */,
+				697AAC031370B4BF00B7FA6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		697AAC031370B4BF00B7FA6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				697AAC021370B4BF00B7FA6B /* libAtSystemUtils.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		697AAC041370B4BF00B7FA6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				697AAC051370B4BF00B7FA6B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		697AAC1D1370B5AE00B7FA6B /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				697AAC091370B4BF00B7FA6B /* SystemUtils-Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		69A165DC13897FD10036C65A /* ooid */ = {
+			isa = PBXGroup;
+			children = (
+				69A165DD13897FEF0036C65A /* array.h */,
+				69A165DE13897FEF0036C65A /* devrand.h */,
+				69A165DF13897FEF0036C65A /* devrandom.h */,
+				69A165E013897FEF0036C65A /* iofwd.h */,
+				69A165E113897FEF0036C65A /* iostate.h */,
+				69A165E213897FEF0036C65A /* randomstream.h */,
+				69A165E313897FEF0036C65A /* unique.h */,
+				69A165E413897FEF0036C65A /* uuid.h */,
+				69A165E513897FEF0036C65A /* winrand.h */,
+				69A165E613897FEF0036C65A /* winrandom.h */,
+			);
+			name = ooid;
+			sourceTree = "<group>";
+		};
+		69AF7CD01370F206006E1226 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				69AF7CD11370F206006E1226 /* include */,
+				69AF7CF31370F206006E1226 /* utils */,
+			);
+			name = Sources;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		69AF7CD11370F206006E1226 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				69A165DC13897FD10036C65A /* ooid */,
+				69A165D513897FCA0036C65A /* file.h */,
+				69A165D713897FCA0036C65A /* uuid.h */,
+				69AF7CD21370F206006E1226 /* commandline.h */,
+				69AF7CD31370F206006E1226 /* criticalsection.h */,
+				69AF7CD41370F206006E1226 /* debug.h */,
+				69AF7CD51370F206006E1226 /* exception.h */,
+				69AF7CD61370F206006E1226 /* macros.h */,
+				69AF7CD71370F206006E1226 /* number.h */,
+				69B5902813F98EAF00A0721D /* log.h */,
+				69AF7CD81370F206006E1226 /* unix.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		69AF7CF31370F206006E1226 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		697AAC001370B4BF00B7FA6B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69AF7D011370F206006E1226 /* commandline.h in Headers */,
+				69AF7D021370F206006E1226 /* criticalsection.h in Headers */,
+				69AF7D031370F206006E1226 /* debug.h in Headers */,
+				69AF7D041370F206006E1226 /* exception.h in Headers */,
+				69AF7D051370F206006E1226 /* macros.h in Headers */,
+				69AF7D061370F206006E1226 /* number.h in Headers */,
+				69AF7D071370F206006E1226 /* unix.h in Headers */,
+				69A165D813897FCA0036C65A /* file.h in Headers */,
+				69A165DA13897FCA0036C65A /* uuid.h in Headers */,
+				69A165E713897FEF0036C65A /* array.h in Headers */,
+				69A165E813897FEF0036C65A /* devrand.h in Headers */,
+				69A165E913897FEF0036C65A /* devrandom.h in Headers */,
+				69A165EA13897FEF0036C65A /* iofwd.h in Headers */,
+				69A165EB13897FEF0036C65A /* iostate.h in Headers */,
+				69A165EC13897FEF0036C65A /* randomstream.h in Headers */,
+				69A165ED13897FEF0036C65A /* unique.h in Headers */,
+				69A165EE13897FEF0036C65A /* uuid.h in Headers */,
+				69A165EF13897FEF0036C65A /* winrand.h in Headers */,
+				69A165F013897FEF0036C65A /* winrandom.h in Headers */,
+				69B5902913F98EAF00A0721D /* log.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		697AAC011370B4BF00B7FA6B /* SystemUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697AAC0C1370B4BF00B7FA6B /* Build configuration list for PBXNativeTarget "SystemUtils" */;
+			buildPhases = (
+				697AABFE1370B4BF00B7FA6B /* Sources */,
+				697AABFF1370B4BF00B7FA6B /* Frameworks */,
+				697AAC001370B4BF00B7FA6B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SystemUtils;
+			productName = SystemUtils;
+			productReference = 697AAC021370B4BF00B7FA6B /* libAtSystemUtils.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		697AABF91370B4BF00B7FA6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Fidelity Investments";
+			};
+			buildConfigurationList = 697AABFC1370B4BF00B7FA6B /* Build configuration list for PBXProject "SystemUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 697AABF71370B4BF00B7FA6B;
+			productRefGroup = 697AAC031370B4BF00B7FA6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				697AAC011370B4BF00B7FA6B /* SystemUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		697AABFE1370B4BF00B7FA6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		697AAC0A1370B4BF00B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		697AAC0B1370B4BF00B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		697AAC0D1370B4BF00B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SystemUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					UNIX,
+					OPENSSL,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtSystemUtils;
+			};
+			name = Debug;
+		};
+		697AAC0E1370B4BF00B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SystemUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					UNIX,
+					OPENSSL,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtSystemUtils;
+			};
+			name = Release;
+		};
+		C31E55E01469D00200CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = ProdCandidate;
+		};
+		C31E55E11469D00200CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SystemUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					UNIX,
+					OPENSSL,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtSystemUtils;
+			};
+			name = ProdCandidate;
+		};
+		C37DCEB0146851D600B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = AppStore;
+		};
+		C37DCEB1146851D600B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/SystemUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemUtils-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					UNIX,
+					OPENSSL,
+				);
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtSystemUtils;
+			};
+			name = AppStore;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		697AABFC1370B4BF00B7FA6B /* Build configuration list for PBXProject "SystemUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AAC0A1370B4BF00B7FA6B /* Debug */,
+				697AAC0B1370B4BF00B7FA6B /* Release */,
+				C37DCEB0146851D600B540AC /* AppStore */,
+				C31E55E01469D00200CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697AAC0C1370B4BF00B7FA6B /* Build configuration list for PBXNativeTarget "SystemUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AAC0D1370B4BF00B7FA6B /* Debug */,
+				697AAC0E1370B4BF00B7FA6B /* Release */,
+				C37DCEB1146851D600B540AC /* AppStore */,
+				C31E55E11469D00200CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 697AABF91370B4BF00B7FA6B /* Project object */;
+}
