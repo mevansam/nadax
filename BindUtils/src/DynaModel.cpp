@@ -43,8 +43,6 @@
 static Number<long> instanceCount(0);
 #endif
 
-static std::string empty();
-
 
 namespace binding {
 
@@ -235,6 +233,8 @@ DynaModelNode Node::add(const char* key, Type type) {
 		}
 	} else
 		THROW(DynaModelException, EXCEP_MSSG(ATTEMPT_TO_ADD_KEY_TO_LIST));
+
+	return DynaModelNode();
 }
 
 DynaModelNode Node::add(Type type) {
@@ -251,6 +251,8 @@ DynaModelNode Node::add(Type type) {
 
 	} else
 		THROW(DynaModelException, EXCEP_MSSG(ATTEMPT_TO_ADD_TO_MAP));
+
+	return DynaModelNode();
 }
 
 void Node::setValue(const char* key, const char* value) {
@@ -801,7 +803,7 @@ void DynaModelBinder::bindValue(void* binder, const char* element, const char* b
                 int stripLen = parseRule->strip.length();
                 if (stripLen != 0) {
                     
-                    int stripOffset = 0;
+                	size_t stripOffset = 0;
                     
                     int replaceLen = parseRule->replace.length();
                     bool replace = (replaceLen != 0);
