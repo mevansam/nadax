@@ -1,0 +1,16 @@
+
+.gitignore.*
+.DS_Store
+
+*.a
+*.o
+*.so
+*.dylib
+[Dd]ebug*/
+[Rr]elease*/
+
+SystemUtils/libs/bin/
+SystemUtils/libs/include/
+SystemUtils/libs/lib/
+SystemUtils/libs/tmp/
+
