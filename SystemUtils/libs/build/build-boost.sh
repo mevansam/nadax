@@ -11,7 +11,7 @@ tar zxvf "boost_${BOOST_VERSION//./_}.tar.gz"
 
 pushd "boost_${BOOST_VERSION//./_}"
 ./bootstrap.sh
-./bjam --includedir=${ROOTDIR}/include --libdir=${ROOTDIR}/lib install
+./b2 link=static threading=multi --includedir=${ROOTDIR}/include --libdir=${ROOTDIR}/lib install
 popd
 
 rm -rf "boost_${BOOST_VERSION//./_}"
