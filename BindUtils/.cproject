@@ -9,7 +9,7 @@
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BindUtils"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BindUtils/Debug"/>
-						<entry flags="RESOLVED" kind="libraryFile" name="AtBindUtils"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="NadaxDataBinding"/>
 					</externalSetting>
 				</externalSettings>
 				<extensions>
@@ -21,7 +21,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="a" artifactName="AtBindUtils" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.macosx.lib.debug.707086004" name="Debug" parent="cdt.managedbuild.config.macosx.lib.debug">
+				<configuration artifactExtension="a" artifactName="NadaxDataBinding" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.staticLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.staticLib" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.macosx.lib.debug.707086004" name="Debug" parent="cdt.managedbuild.config.macosx.lib.debug">
 					<folderInfo id="cdt.managedbuild.config.macosx.lib.debug.707086004." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.lib.debug.578682828" name="MacOSX GCC" superClass="cdt.managedbuild.toolchain.gnu.macosx.lib.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.lib.debug.719237707" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.lib.debug"/>
@@ -31,8 +31,8 @@
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.lib.debug.528367346" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.lib.debug">
 								<option id="gnu.both.asm.option.include.paths.345243944" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1998793389" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -44,9 +44,9 @@
 								<option id="gnu.cpp.compiler.macosx.lib.debug.option.debugging.level.50040366" name="Debug Level" superClass="gnu.cpp.compiler.macosx.lib.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.other.other.224095802" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1283739532" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.1964192514" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>
@@ -60,9 +60,9 @@
 								<option id="gnu.c.compiler.option.misc.other.1505262917" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.c.compiler.option.include.files.904273318" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
 								<option id="gnu.c.compiler.option.include.paths.1468179565" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/SystemUtils/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1194902002" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>

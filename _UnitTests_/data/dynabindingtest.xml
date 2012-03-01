@@ -1,0 +1,93 @@
+<test>
+
+	<overview>
+		<intro>qqqq wwww eeee</intro>
+		<terms>
+			<line>ccc ccc ccc</line>
+			<line>fff fff fff</line>
+		</terms>
+		<legal>
+			<header>ppppp pppp</header>
+			<body>jjjjjjjjjjjjjj jjjjjjjjjjjjj</body>
+			<footer>tttt tttt</footer>
+		</legal>
+	</overview>
+
+	<summary>
+		<sumitem id="a">
+			<name>aaaaa</name>
+			<desc>a aa aaa aaaa aaaaa</desc>
+			<value>11111</value>
+		</sumitem>
+		<sumitem id="b">
+			<name>bbbbb</name>
+			<desc>b bb bbb bbbb bbbbb</desc>
+			<value>22222</value>
+		</sumitem>
+		<sumitem id="c">
+			<name>ccccc</name>
+			<desc>c cc ccc cccc cccc</desc>
+			<value>33333</value>
+		</sumitem>
+	</summary>
+	
+	<detail1>
+		<detailitem id="a">
+			<detaildesc>aaaaa aaaaa aaaaa</detaildesc>
+			<value1>11111.1</value1>
+			<value2>11111.2</value2>
+			<y>
+				<z>a</z>
+				<z>b</z>
+				<z>c</z>
+				<z>d</z>
+			</y>
+		</detailitem>
+		<detailitem id="b">
+			<detaildesc>bbbbb bbbbb bbbbb</detaildesc>
+			<value1>22222.1</value1>
+			<value2>22222.2</value2>
+			<y>
+				<z>e</z>
+				<z>f</z>
+				<z>g</z>
+				<z>h</z>
+			</y>
+		</detailitem>
+		<detailitem id="c">
+			<detaildesc>ccccc ccccc ccccc</detaildesc>
+			<value1>33333.1</value1>
+			<value2>33333.2</value2>
+			<y>
+				<z>a</z>
+				<z>b</z>
+				<z>c</z>
+				<z>d</z>
+			</y>
+		</detailitem>
+	</detail1>
+	
+	<detail2>
+		<y>
+			<id>a</id>
+			<x>AA</x>
+		</y>
+		<y>
+			<id>b</id>
+			<x>BB</x>
+		</y>
+		<y>
+			<id>c</id>
+			<x>CC</x>
+		</y>
+		<y>
+			<id>d</id>
+			<x>DD</x>
+		</y>
+		<y>
+			<id>e</id>
+			<x>EE</x>
+		</y>
+	</detail2>
+
+</test>
