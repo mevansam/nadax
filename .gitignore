@@ -9,8 +9,8 @@
 [Dd]ebug*/
 [Rr]elease*/
 
-SystemUtils/libs/bin/
-SystemUtils/libs/include/
-SystemUtils/libs/lib/
-SystemUtils/libs/tmp/
+NadaxUtility/libs/bin/
+NadaxUtility/libs/include/
+NadaxUtility/libs/lib/
+NadaxUtility/libs/tmp/
 
