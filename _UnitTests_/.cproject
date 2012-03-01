@@ -16,7 +16,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="AtUnitTests" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221" name="Debug" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+				<configuration artifactName="NadaxUnitTests" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221" name="Debug" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
 					<folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.exe.debug.1925924570" name="MacOSX GCC" superClass="cdt.managedbuild.toolchain.gnu.macosx.exe.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.exe.debug.563942396" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.exe.debug"/>
@@ -32,14 +32,14 @@
 									<listOptionValue builtIn="false" value="soci_sqlite3"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="boost_regex"/>
-									<listOptionValue builtIn="false" value="AtBindUtils"/>
-									<listOptionValue builtIn="false" value="AtMessageBus"/>
+									<listOptionValue builtIn="false" value="NadaxDataBinding"/>
+									<listOptionValue builtIn="false" value="NadaxServiceBus"/>
 								</option>
 								<option id="macosx.cpp.link.option.paths.391134038" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/opt/local/lib"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/lib}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BindUtils/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MessageBus/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/Debug}&quot;"/>
 								</option>
 								<option id="macosx.cpp.link.option.strip.564236197" name="Omit all symbol information (-s)" superClass="macosx.cpp.link.option.strip" value="false" valueType="boolean"/>
 								<option id="macosx.cpp.link.option.flags.620074242" name="Linker flags" superClass="macosx.cpp.link.option.flags" value="-v" valueType="string"/>
@@ -60,7 +60,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MessageBus/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.586727932" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.347455729" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
@@ -80,7 +80,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MessageBus/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.misc.other.1032724217" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1570397697" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
