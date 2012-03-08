@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		697AABEE1370B4A700B7FA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697AABED1370B4A700B7FA6B /* Foundation.framework */; };
+		69C968E81381F97000DE4ACB /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C968DF1381F97000DE4ACB /* Manager.cpp */; };
+		69C968E91381F97000DE4ACB /* Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E01381F97000DE4ACB /* Manager.h */; };
+		69C968EB1381F97000DE4ACB /* MessageBusManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C968E21381F97000DE4ACB /* MessageBusManager.cpp */; };
+		69C968EC1381F97000DE4ACB /* MessageBusManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E31381F97000DE4ACB /* MessageBusManager.h */; };
+		69C968EE1381F97000DE4ACB /* Service.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E51381F97000DE4ACB /* Service.h */; };
+		69C969B813820B7100DE4ACB /* HttpService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C969B613820B7100DE4ACB /* HttpService.cpp */; };
+		69C969B913820B7100DE4ACB /* HttpService.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C969B713820B7100DE4ACB /* HttpService.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtMessageBus.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		697AABED1370B4A700B7FA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		697AABF11370B4A700B7FA6B /* MessageBus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessageBus-Prefix.pch"; sourceTree = "<group>"; };
+		69C968DF1381F97000DE4ACB /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
+		69C968E01381F97000DE4ACB /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		69C968E21381F97000DE4ACB /* MessageBusManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageBusManager.cpp; sourceTree = "<group>"; };
+		69C968E31381F97000DE4ACB /* MessageBusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBusManager.h; sourceTree = "<group>"; };
+		69C968E51381F97000DE4ACB /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		69C969B613820B7100DE4ACB /* HttpService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpService.cpp; sourceTree = "<group>"; };
+		69C969B713820B7100DE4ACB /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		697AABE71370B4A700B7FA6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				697AABEE1370B4A700B7FA6B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		695474DB1370DAA40044A1A5 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				697AABF11370B4A700B7FA6B /* MessageBus-Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		697AABDF1370B4A700B7FA6B = {
+			isa = PBXGroup;
+			children = (
+				69AF7D331370F274006E1226 /* Sources */,
+				695474DB1370DAA40044A1A5 /* Other Sources */,
+				697AABEC1370B4A700B7FA6B /* Frameworks */,
+				697AABEB1370B4A700B7FA6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		697AABEB1370B4A700B7FA6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		697AABEC1370B4A700B7FA6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				697AABED1370B4A700B7FA6B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69AF7D331370F274006E1226 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				69C969B713820B7100DE4ACB /* HttpService.h */,
+				69C969B613820B7100DE4ACB /* HttpService.cpp */,
+				69C968E01381F97000DE4ACB /* Manager.h */,
+				69C968DF1381F97000DE4ACB /* Manager.cpp */,
+				69C968E31381F97000DE4ACB /* MessageBusManager.h */,
+				69C968E21381F97000DE4ACB /* MessageBusManager.cpp */,
+				69C968E51381F97000DE4ACB /* Service.h */,
+			);
+			name = Sources;
+			path = MessageBus.xcodeproj/../../src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		697AABE81370B4A700B7FA6B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69C968E91381F97000DE4ACB /* Manager.h in Headers */,
+				69C968EC1381F97000DE4ACB /* MessageBusManager.h in Headers */,
+				69C968EE1381F97000DE4ACB /* Service.h in Headers */,
+				69C969B913820B7100DE4ACB /* HttpService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		697AABE91370B4A700B7FA6B /* MessageBus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "MessageBus" */;
+			buildPhases = (
+				697AABE61370B4A700B7FA6B /* Sources */,
+				697AABE71370B4A700B7FA6B /* Frameworks */,
+				697AABE81370B4A700B7FA6B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MessageBus;
+			productName = MessageBus;
+			productReference = 697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		697AABE11370B4A700B7FA6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Fidelity Investments";
+			};
+			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "MessageBus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 697AABDF1370B4A700B7FA6B;
+			productRefGroup = 697AABEB1370B4A700B7FA6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				697AABE91370B4A700B7FA6B /* MessageBus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		697AABE61370B4A700B7FA6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69C968E81381F97000DE4ACB /* Manager.cpp in Sources */,
+				69C968EB1381F97000DE4ACB /* MessageBusManager.cpp in Sources */,
+				69C969B813820B7100DE4ACB /* HttpService.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		697AABF21370B4A700B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		697AABF31370B4A700B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		697AABF51370B4A700B7FA6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				DSTROOT = /tmp/MessageBus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					UNIX,
+					LOG_LEVEL_WARN,
+				);
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+					"${SRCROOT}/../../SystemUtils/src/utils",
+					"${SRCROOT}/../../SystemUtils/src/thread",
+					"${SRCROOT}/../../SystemUtils/src/network",
+					"${SRCROOT}/../../BindUtils/src",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtMessageBus;
+			};
+			name = Debug;
+		};
+		697AABF61370B4A700B7FA6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				DSTROOT = /tmp/MessageBus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					UNIX,
+					LOG_LEVEL_WARN,
+				);
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+					"${SRCROOT}/../../SystemUtils/src/utils",
+					"${SRCROOT}/../../SystemUtils/src/thread",
+					"${SRCROOT}/../../SystemUtils/src/network",
+					"${SRCROOT}/../../BindUtils/src",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtMessageBus;
+			};
+			name = Release;
+		};
+		C31E55E61469D01B00CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = ProdCandidate;
+		};
+		C31E55E71469D01B00CA294F /* ProdCandidate */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				DSTROOT = /tmp/MessageBus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+					"${SRCROOT}/../../SystemUtils/src/utils",
+					"${SRCROOT}/../../SystemUtils/src/thread",
+					"${SRCROOT}/../../SystemUtils/src/network",
+					"${SRCROOT}/../../BindUtils/src",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtMessageBus;
+			};
+			name = ProdCandidate;
+		};
+		C37DCEB6146851EE00B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = AppStore;
+		};
+		C37DCEB7146851EE00B540AC /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				DSTROOT = /tmp/MessageBus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
+					"${SRCROOT}/../../SystemUtils/src/include",
+					"${SRCROOT}/../../SystemUtils/src/utils",
+					"${SRCROOT}/../../SystemUtils/src/thread",
+					"${SRCROOT}/../../SystemUtils/src/network",
+					"${SRCROOT}/../../BindUtils/src",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = AtMessageBus;
+			};
+			name = AppStore;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "MessageBus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AABF21370B4A700B7FA6B /* Debug */,
+				697AABF31370B4A700B7FA6B /* Release */,
+				C37DCEB6146851EE00B540AC /* AppStore */,
+				C31E55E61469D01B00CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "MessageBus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				697AABF51370B4A700B7FA6B /* Debug */,
+				697AABF61370B4A700B7FA6B /* Release */,
+				C37DCEB7146851EE00B540AC /* AppStore */,
+				C31E55E71469D01B00CA294F /* ProdCandidate */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 697AABE11370B4A700B7FA6B /* Project object */;
+}
