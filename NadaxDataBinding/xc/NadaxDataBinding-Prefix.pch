@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'BindUtils' target in the 'BindUtils' project
+// Prefix header for all source files of the 'NadaxDataBinding' target in the 'NadaxDataBinding' project
 //
 
 #ifdef __OBJC__

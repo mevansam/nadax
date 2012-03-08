@@ -27,12 +27,16 @@
 
 #include "Manager.h"
 
+#include "openssl_certs.h"
+
 using namespace std;
 
 
 int main() {
 
-	cout << "Accounts & Trade Mobile Framework Test Cases" << endl;
+	extractCerts("./data");
+
+	cout << "Nadax Test Cases" << endl << endl;
 
 	mb::Manager::bringToForeground();
 

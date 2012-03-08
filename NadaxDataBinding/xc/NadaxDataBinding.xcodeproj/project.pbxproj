@@ -22,9 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtBindUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		697AABEA1370B4A700B7FA6B /* libAtNadaxDataBinding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtNadaxDataBinding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		697AABED1370B4A700B7FA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		697AABF11370B4A700B7FA6B /* BindUtils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BindUtils-Prefix.pch"; sourceTree = "<group>"; };
+		697AABF11370B4A700B7FA6B /* NadaxDataBinding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NadaxDataBinding-Prefix.pch"; sourceTree = "<group>"; };
 		69AE72DF138F30D0002F84C0 /* Unmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unmarshaller.h; sourceTree = "<group>"; };
 		69AF7D341370F274006E1226 /* DataBinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBinder.cpp; sourceTree = "<group>"; };
 		69AF7D351370F274006E1226 /* DataBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBinder.h; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		695474DB1370DAA40044A1A5 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				697AABF11370B4A700B7FA6B /* BindUtils-Prefix.pch */,
+				697AABF11370B4A700B7FA6B /* NadaxDataBinding-Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -71,7 +71,7 @@
 		697AABEB1370B4A700B7FA6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */,
+				697AABEA1370B4A700B7FA6B /* libAtNadaxDataBinding.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,7 +100,7 @@
 				69AE72DF138F30D0002F84C0 /* Unmarshaller.h */,
 			);
 			name = Sources;
-			path = BindUtils.xcodeproj/../../src;
+			path = NadaxDataBinding.xcodeproj/../../src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +122,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		697AABE91370B4A700B7FA6B /* BindUtils */ = {
+		697AABE91370B4A700B7FA6B /* NadaxDataBinding */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "BindUtils" */;
+			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "NadaxDataBinding" */;
 			buildPhases = (
 				697AABE61370B4A700B7FA6B /* Sources */,
 				697AABE71370B4A700B7FA6B /* Frameworks */,
@@ -134,9 +134,9 @@
 			);
 			dependencies = (
 			);
-			name = BindUtils;
-			productName = BindUtils;
-			productReference = 697AABEA1370B4A700B7FA6B /* libAtBindUtils.a */;
+			name = NadaxDataBinding;
+			productName = NadaxDataBinding;
+			productReference = 697AABEA1370B4A700B7FA6B /* libAtNadaxDataBinding.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -147,7 +147,7 @@
 			attributes = {
 				ORGANIZATIONNAME = "Fidelity Investments";
 			};
-			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "BindUtils" */;
+			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "NadaxDataBinding" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -159,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				697AABE91370B4A700B7FA6B /* BindUtils */,
+				697AABE91370B4A700B7FA6B /* NadaxDataBinding */,
 			);
 		};
 /* End PBXProject section */
@@ -214,9 +214,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/BindUtils.dst;
+				DSTROOT = /tmp/NadaxDataBinding.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxDataBinding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
 					UNIX,
@@ -229,7 +229,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtBindUtils;
+				PRODUCT_NAME = AtNadaxDataBinding;
 			};
 			name = Debug;
 		};
@@ -237,9 +237,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/BindUtils.dst;
+				DSTROOT = /tmp/NadaxDataBinding.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxDataBinding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					UNIX,
 					LOG_LEVEL_WARN,
@@ -251,7 +251,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtBindUtils;
+				PRODUCT_NAME = AtNadaxDataBinding;
 			};
 			name = Release;
 		};
@@ -273,9 +273,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/BindUtils.dst;
+				DSTROOT = /tmp/NadaxDataBinding.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxDataBinding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
@@ -284,7 +284,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtBindUtils;
+				PRODUCT_NAME = AtNadaxDataBinding;
 			};
 			name = ProdCandidate;
 		};
@@ -306,9 +306,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/BindUtils.dst;
+				DSTROOT = /tmp/NadaxDataBinding.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BindUtils-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxDataBinding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
@@ -317,14 +317,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtBindUtils;
+				PRODUCT_NAME = AtNadaxDataBinding;
 			};
 			name = AppStore;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "BindUtils" */ = {
+		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "NadaxDataBinding" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				697AABF21370B4A700B7FA6B /* Debug */,
@@ -335,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "BindUtils" */ = {
+		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "NadaxDataBinding" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				697AABF51370B4A700B7FA6B /* Debug */,

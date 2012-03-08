@@ -73,7 +73,7 @@ inline CFile::CFile(const char* path)
 inline CFile::~CFile()
 {
 	if (m_filePath)
-	 free(m_filePath);
+		free(m_filePath);
 }
 
 inline const char* CFile::getPath()

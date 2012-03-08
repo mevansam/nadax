@@ -24,6 +24,8 @@
 							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug.1556541815" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug.116727262" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug">
 								<option id="macosx.cpp.link.option.libs.1445041720" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="z"/>
+									<listOptionValue builtIn="false" value="minizip"/>
 									<listOptionValue builtIn="false" value="cppunit"/>
 									<listOptionValue builtIn="false" value="expat"/>
 									<listOptionValue builtIn="false" value="crypto"/>
@@ -61,6 +63,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.586727932" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.347455729" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
@@ -81,6 +84,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.misc.other.1032724217" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1570397697" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">

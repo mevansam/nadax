@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'MessageBus' target in the 'MessageBus' project
+// Prefix header for all source files of the 'NadaxStreamService' target in the 'NadaxStreamService' project
 //
 
 #ifdef __OBJC__

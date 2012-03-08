@@ -10,21 +10,21 @@
 		697AABEE1370B4A700B7FA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697AABED1370B4A700B7FA6B /* Foundation.framework */; };
 		69C968E81381F97000DE4ACB /* Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C968DF1381F97000DE4ACB /* Manager.cpp */; };
 		69C968E91381F97000DE4ACB /* Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E01381F97000DE4ACB /* Manager.h */; };
-		69C968EB1381F97000DE4ACB /* MessageBusManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C968E21381F97000DE4ACB /* MessageBusManager.cpp */; };
-		69C968EC1381F97000DE4ACB /* MessageBusManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E31381F97000DE4ACB /* MessageBusManager.h */; };
+		69C968EB1381F97000DE4ACB /* NadaxHttpServiceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C968E21381F97000DE4ACB /* NadaxHttpServiceManager.cpp */; };
+		69C968EC1381F97000DE4ACB /* NadaxHttpServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E31381F97000DE4ACB /* NadaxHttpServiceManager.h */; };
 		69C968EE1381F97000DE4ACB /* Service.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C968E51381F97000DE4ACB /* Service.h */; };
 		69C969B813820B7100DE4ACB /* HttpService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69C969B613820B7100DE4ACB /* HttpService.cpp */; };
 		69C969B913820B7100DE4ACB /* HttpService.h in Headers */ = {isa = PBXBuildFile; fileRef = 69C969B713820B7100DE4ACB /* HttpService.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtMessageBus.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		697AABEA1370B4A700B7FA6B /* libAtNadaxHttpService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAtNadaxHttpService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		697AABED1370B4A700B7FA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		697AABF11370B4A700B7FA6B /* MessageBus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessageBus-Prefix.pch"; sourceTree = "<group>"; };
+		697AABF11370B4A700B7FA6B /* NadaxHttpService-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NadaxHttpService-Prefix.pch"; sourceTree = "<group>"; };
 		69C968DF1381F97000DE4ACB /* Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Manager.cpp; sourceTree = "<group>"; };
 		69C968E01381F97000DE4ACB /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
-		69C968E21381F97000DE4ACB /* MessageBusManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MessageBusManager.cpp; sourceTree = "<group>"; };
-		69C968E31381F97000DE4ACB /* MessageBusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBusManager.h; sourceTree = "<group>"; };
+		69C968E21381F97000DE4ACB /* NadaxHttpServiceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NadaxHttpServiceManager.cpp; sourceTree = "<group>"; };
+		69C968E31381F97000DE4ACB /* NadaxHttpServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NadaxHttpServiceManager.h; sourceTree = "<group>"; };
 		69C968E51381F97000DE4ACB /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		69C969B613820B7100DE4ACB /* HttpService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpService.cpp; sourceTree = "<group>"; };
 		69C969B713820B7100DE4ACB /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		695474DB1370DAA40044A1A5 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				697AABF11370B4A700B7FA6B /* MessageBus-Prefix.pch */,
+				697AABF11370B4A700B7FA6B /* NadaxHttpService-Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 		697AABEB1370B4A700B7FA6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */,
+				697AABEA1370B4A700B7FA6B /* libAtNadaxHttpService.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,12 +83,12 @@
 				69C969B613820B7100DE4ACB /* HttpService.cpp */,
 				69C968E01381F97000DE4ACB /* Manager.h */,
 				69C968DF1381F97000DE4ACB /* Manager.cpp */,
-				69C968E31381F97000DE4ACB /* MessageBusManager.h */,
-				69C968E21381F97000DE4ACB /* MessageBusManager.cpp */,
+				69C968E31381F97000DE4ACB /* NadaxHttpServiceManager.h */,
+				69C968E21381F97000DE4ACB /* NadaxHttpServiceManager.cpp */,
 				69C968E51381F97000DE4ACB /* Service.h */,
 			);
 			name = Sources;
-			path = MessageBus.xcodeproj/../../src;
+			path = NadaxHttpService.xcodeproj/../../src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C968E91381F97000DE4ACB /* Manager.h in Headers */,
-				69C968EC1381F97000DE4ACB /* MessageBusManager.h in Headers */,
+				69C968EC1381F97000DE4ACB /* NadaxHttpServiceManager.h in Headers */,
 				69C968EE1381F97000DE4ACB /* Service.h in Headers */,
 				69C969B913820B7100DE4ACB /* HttpService.h in Headers */,
 			);
@@ -108,9 +108,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		697AABE91370B4A700B7FA6B /* MessageBus */ = {
+		697AABE91370B4A700B7FA6B /* NadaxHttpService */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "MessageBus" */;
+			buildConfigurationList = 697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "NadaxHttpService" */;
 			buildPhases = (
 				697AABE61370B4A700B7FA6B /* Sources */,
 				697AABE71370B4A700B7FA6B /* Frameworks */,
@@ -120,9 +120,9 @@
 			);
 			dependencies = (
 			);
-			name = MessageBus;
-			productName = MessageBus;
-			productReference = 697AABEA1370B4A700B7FA6B /* libAtMessageBus.a */;
+			name = NadaxHttpService;
+			productName = NadaxHttpService;
+			productReference = 697AABEA1370B4A700B7FA6B /* libAtNadaxHttpService.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -133,7 +133,7 @@
 			attributes = {
 				ORGANIZATIONNAME = "Fidelity Investments";
 			};
-			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "MessageBus" */;
+			buildConfigurationList = 697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "NadaxHttpService" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -145,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				697AABE91370B4A700B7FA6B /* MessageBus */,
+				697AABE91370B4A700B7FA6B /* NadaxHttpService */,
 			);
 		};
 /* End PBXProject section */
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C968E81381F97000DE4ACB /* Manager.cpp in Sources */,
-				69C968EB1381F97000DE4ACB /* MessageBusManager.cpp in Sources */,
+				69C968EB1381F97000DE4ACB /* NadaxHttpServiceManager.cpp in Sources */,
 				69C969B813820B7100DE4ACB /* HttpService.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,9 +199,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				DSTROOT = /tmp/MessageBus.dst;
+				DSTROOT = /tmp/NadaxHttpService.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxHttpService-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
 					UNIX,
@@ -218,7 +218,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtMessageBus;
+				PRODUCT_NAME = AtNadaxHttpService;
 			};
 			name = Debug;
 		};
@@ -227,9 +227,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				DSTROOT = /tmp/MessageBus.dst;
+				DSTROOT = /tmp/NadaxHttpService.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxHttpService-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					UNIX,
 					LOG_LEVEL_WARN,
@@ -245,7 +245,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtMessageBus;
+				PRODUCT_NAME = AtNadaxHttpService;
 			};
 			name = Release;
 		};
@@ -268,9 +268,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				DSTROOT = /tmp/MessageBus.dst;
+				DSTROOT = /tmp/NadaxHttpService.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxHttpService-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
@@ -283,7 +283,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtMessageBus;
+				PRODUCT_NAME = AtNadaxHttpService;
 			};
 			name = ProdCandidate;
 		};
@@ -306,9 +306,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				DSTROOT = /tmp/MessageBus.dst;
+				DSTROOT = /tmp/NadaxHttpService.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessageBus-Prefix.pch";
+				GCC_PREFIX_HEADER = "NadaxHttpService-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = UNIX;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/../../../libraries/common/export/MiLOS.framework/Headers",
@@ -321,14 +321,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AtMessageBus;
+				PRODUCT_NAME = AtNadaxHttpService;
 			};
 			name = AppStore;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "MessageBus" */ = {
+		697AABE41370B4A700B7FA6B /* Build configuration list for PBXProject "NadaxHttpService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				697AABF21370B4A700B7FA6B /* Debug */,
@@ -339,7 +339,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "MessageBus" */ = {
+		697AABF41370B4A700B7FA6B /* Build configuration list for PBXNativeTarget "NadaxHttpService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				697AABF51370B4A700B7FA6B /* Debug */,

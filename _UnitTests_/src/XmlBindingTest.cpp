@@ -33,7 +33,7 @@
 #define WHITESPACE   "\t\r\n "
 
 #define XML_PARSE_TEST01  "./data/XmlParseTest01.xml"
-#define XML_PARSE_TEST02  "./data/alertshistorical.xml"
+#define XML_PARSE_TEST02  "./data/XmlParseTest02.xml"
 #define XML_PARSE_TEST03  "./data/dynabindingtest.xml"
 
 using namespace binding;

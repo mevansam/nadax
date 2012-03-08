@@ -7,8 +7,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.macosx.lib.debug.707086004" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<externalSettings>
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BindUtils"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BindUtils/Debug"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/NadaxDataBinding"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/NadaxDataBinding/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="NadaxDataBinding"/>
 					</externalSetting>
 				</externalSettings>
@@ -25,15 +25,11 @@
 					<folderInfo id="cdt.managedbuild.config.macosx.lib.debug.707086004." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.lib.debug.578682828" name="MacOSX GCC" superClass="cdt.managedbuild.toolchain.gnu.macosx.lib.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.lib.debug.719237707" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.lib.debug"/>
-							<builder buildPath="${workspace_loc:/BindUtils/Debug}" id="cdt.managedbuild.target.gnu.builder.macosx.lib.debug.190608159" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.lib.debug"/>
+							<builder buildPath="${workspace_loc:/NadaxDataBinding/Debug}" id="cdt.managedbuild.target.gnu.builder.macosx.lib.debug.190608159" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.lib.debug"/>
 							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.base.265469205" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.base"/>
 							<tool id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base.1108251549" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.lib.debug.528367346" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.lib.debug">
-								<option id="gnu.both.asm.option.include.paths.345243944" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
-								</option>
+								<option id="gnu.both.asm.option.include.paths.345243944" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1998793389" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.toolmacosx.lib.debug.gnu.archiver.1287326257" name="GCC Archiver" superClass="cdt.managedbuild.toolmacosx.lib.debug.gnu.archiver">
@@ -47,6 +43,7 @@
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.1964192514" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>
@@ -63,6 +60,7 @@
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1194902002" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>
@@ -86,9 +84,9 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.macosx.lib.release.794777327" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<externalSettings>
 					<externalSetting>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/BindUtils"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/BindUtils/Release"/>
-						<entry flags="RESOLVED" kind="libraryFile" name="BindUtils"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/NadaxDataBinding"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/NadaxDataBinding/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="NadaxDataBinding"/>
 					</externalSetting>
 				</externalSettings>
 				<extensions>
@@ -104,7 +102,7 @@
 					<folderInfo id="cdt.managedbuild.config.macosx.lib.release.794777327." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.lib.release.1172532420" name="MacOSX GCC" superClass="cdt.managedbuild.toolchain.gnu.macosx.lib.release">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.lib.release.1245402094" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.lib.release"/>
-							<builder buildPath="${workspace_loc:/BindUtils/Release}" id="cdt.managedbuild.target.gnu.builder.macosx.lib.release.1452371490" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.lib.release"/>
+							<builder buildPath="${workspace_loc:/NadaxDataBinding/Release}" id="cdt.managedbuild.target.gnu.builder.macosx.lib.release.1452371490" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.lib.release"/>
 							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.base.2126937529" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.base"/>
 							<tool id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base.561363774" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.lib.release.51098848" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.lib.release">
@@ -156,7 +154,7 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="BindUtils.cdt.managedbuild.target.macosx.lib.1929766276" name="Static Library" projectType="cdt.managedbuild.target.macosx.lib"/>
+		<project id="NadaxDataBinding.cdt.managedbuild.target.macosx.lib.1929766276" name="Static Library" projectType="cdt.managedbuild.target.macosx.lib"/>
 	</storageModule>
 	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="scannerConfiguration">
