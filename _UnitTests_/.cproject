@@ -27,6 +27,7 @@
 									<listOptionValue builtIn="false" value="z"/>
 									<listOptionValue builtIn="false" value="minizip"/>
 									<listOptionValue builtIn="false" value="cppunit"/>
+									<listOptionValue builtIn="false" value="ctemplate"/>
 									<listOptionValue builtIn="false" value="expat"/>
 									<listOptionValue builtIn="false" value="crypto"/>
 									<listOptionValue builtIn="false" value="sqlite3"/>
@@ -34,14 +35,18 @@
 									<listOptionValue builtIn="false" value="soci_sqlite3"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="boost_regex"/>
+									<listOptionValue builtIn="false" value="NadaxUtility"/>
 									<listOptionValue builtIn="false" value="NadaxDataBinding"/>
 									<listOptionValue builtIn="false" value="NadaxServiceBus"/>
+									<listOptionValue builtIn="false" value="NadaxHttpService"/>
 								</option>
 								<option id="macosx.cpp.link.option.paths.391134038" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/opt/local/lib"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxHttpService/Debug}&quot;"/>
 								</option>
 								<option id="macosx.cpp.link.option.strip.564236197" name="Omit all symbol information (-s)" superClass="macosx.cpp.link.option.strip" value="false" valueType="boolean"/>
 								<option id="macosx.cpp.link.option.flags.620074242" name="Linker flags" superClass="macosx.cpp.link.option.flags" value="-v" valueType="string"/>
@@ -58,12 +63,16 @@
 								<option id="gnu.cpp.compilermacosx.exe.debug.option.optimization.level.745666658" name="Optimization Level" superClass="gnu.cpp.compilermacosx.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.827526138" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1371165969" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxHttpService/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
+									<listOptionValue builtIn="false" value="/opt/local/include"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.586727932" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.347455729" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
@@ -79,12 +88,16 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.macosx.exe.debug.option.optimization.level.254395283" name="Optimization Level" superClass="gnu.c.compiler.macosx.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.macosx.exe.debug.option.debugging.level.946266775" name="Debug Level" superClass="gnu.c.compiler.macosx.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1542427487" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxHttpService/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
+									<listOptionValue builtIn="false" value="/opt/local/include"/>
 								</option>
 								<option id="gnu.c.compiler.option.misc.other.1032724217" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1570397697" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
@@ -100,7 +113,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="MockHttpService.cpp|MessageBusManagerTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -577,5 +590,7 @@
 			</profile>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/_UnitTests_"/>
+	</storageModule>
 </cproject>

@@ -184,7 +184,7 @@ public:
         void* threadContext = Manager::onBeginManagerThread();
         
         bool error = false;
-        long timeout = 0;
+        long long timeout = 0;
         
         while (!m_stop) {
             
@@ -807,6 +807,8 @@ bool MessageBusManager::unmarshalMessage(void* context, mb::MessagePtr message, 
                         
                         TRACE( "Unmarshalling xml data stream for response message with subject '%s'.",
                               message->getSubject().c_str() );
+
+                        break;
                 }
                 
                 response->isFirst = false;

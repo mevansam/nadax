@@ -594,9 +594,10 @@ void DynaModelBinder::reset() {
 
 inline void DynaModelBinder::addNodeToParent(const DynaModelBinding* binding) {
 
-    if(m_bindingNode.empty())
-    {
-        TRACE("Empty stack on addNodeToParent");
+    if (m_bindingNode.empty()) {
+
+    	TRACE( "Empty stack at addNodeToParent while adding binding %s to parent.",
+        	binding->m_path.c_str() );
         return;
     }
     
@@ -605,19 +606,15 @@ inline void DynaModelBinder::addNodeToParent(const DynaModelBinding* binding) {
 
 	if (binding->m_ref.length() == 0) {
 
-        if(m_bindingNode.empty())
-        {
-            TRACE("Empty stack on addNodeToParent");
+        if (m_bindingNode.empty()) {
+
+        	TRACE( "Empty stack at addNodeToParent addNodeToParent while adding binding %s to parent.",
+            	binding->m_path.c_str() );
             return;
         }
 
 		DynaModelNode top = m_bindingNode.top();
-        if (top.get() == 0)
-        {
-            WARN("Can't add node to parent. Node at top is NULL");
-            return;
-        }
-        
+
         switch (top->getType()) {
                 
             case DynaModel::MAP:
@@ -646,17 +643,18 @@ inline void DynaModelBinder::addNodeToParent(const DynaModelBinding* binding) {
 		while (node.get() && i < numKeys)
 			node = node->get(dynModelKeyPath[i++].c_str());
 
-		if (!m_index.empty()) {
+		if (node.get()) {
 
-            std::string index = m_index.top();
-            m_index.pop();
+			if (!m_index.empty()) {
 
-            if (index.length() > 0)
-                node = node->get(index.c_str());
+	            std::string index = m_index.top();
+	            if (index.length() > 0)
+	                node = node->get(index.c_str());
+			}
+
+			if (node.get())
+				node->add(curr, binding->m_key.c_str());
 		}
-
-		if (node.get())
-			node->add(curr, binding->m_key.c_str());
 
 	} else {
 
@@ -678,6 +676,7 @@ void DynaModelBinder::beginMap(void* binder, const char *element, std::map<std::
 	GET_BINDER(DynaModelBinder);
 	dataBinder->finalizeListElemProcessing();
 	dataBinder->m_bindingNode.push(DynaModel::create());
+	dataBinder->m_index.push("");
 }
 
 void DynaModelBinder::endMap(void* binder, const char* element, const char* body) {
@@ -688,6 +687,7 @@ void DynaModelBinder::endMap(void* binder, const char* element, const char* body
 	dataBinder->finalizeListElemProcessing();
 	dataBinder->addNodeToParent(binding);
 
+    dataBinder->m_index.pop();
     dataBinder->m_lastBoundPath = dataBinder->m_path.str();
 }
 
@@ -834,7 +834,7 @@ void DynaModelBinder::bindValue(void* binder, const char* element, const char* b
             curr->setValue(binding.m_key.c_str(), body);
         
         if (binding.m_isIdx) {
-            dataBinder->m_index.pop();
+        	dataBinder->m_index.pop();
             dataBinder->m_index.push(body);
         }
 	}

@@ -74,6 +74,7 @@
 
 // Math
 
+#ifndef ANDROID
 inline char   min(char a, char b)     { return (a < b ? a : b); }
 inline char   max(char a, char b)     { return (a > b ? a : b); }
 inline short  min(short a, short b)   { return (a < b ? a : b); }
@@ -86,6 +87,7 @@ inline float  min(float a, float b)   { return (a < b ? a : b); }
 inline float  max(float a, float b)   { return (a > b ? a : b); }
 inline double min(double a, double b) { return (a < b ? a : b); }
 inline double max(double a, double b) { return (a > b ? a : b); }
+#endif // ANDROID
 
 
 // I/O 
@@ -130,9 +132,11 @@ inline double max(double a, double b) { return (a > b ? a : b); }
 #define INVALID_SOCKET  -1
 #define SOCKET_ERROR    -1
 
+#ifndef ANDROID
 #ifndef TCP_NODELAY
 #define	TCP_NODELAY  0x0001
 #endif // TCP_NODELAY
+#endif // ANDROID
 
 #ifndef SO_ACCEPTCONN
 #define	SO_ACCEPTCONN  0x0002

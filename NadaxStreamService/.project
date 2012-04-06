@@ -3,6 +3,9 @@
 	<name>NadaxStreamService</name>
 	<comment></comment>
 	<projects>
+		<project>NadaxDataBinding</project>
+		<project>NadaxServiceBus</project>
+		<project>NadaxUtility</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

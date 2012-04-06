@@ -125,15 +125,9 @@ void MockHttpService::destroy() {
 	std::cout << "Destroying Mock HTTP Service: " << this->getSubject();
 }
 
-void MockHttpService::pause(std::ostream& output) {
-}
-
-void MockHttpService::resume(std::istream& input) {
-}
-
 mb::Message* MockHttpService::createMessage() {
 	mb::Message* message = new mb::http::HttpMessage(mb::http::HttpMessage::POST);
-	mb::Service::initRequestMessage(message, msgType);
+	mb::Service::initMessage(message, msgType);
 	return message;
 }
 
@@ -151,7 +145,7 @@ void MockHttpService::onMessage(mb::MessagePtr message) {
 	}
 
 	mb::MessagePtr responseMessage(new mb::StreamMessage());
-	mb::Service::initResponseMessage(message.get(), responseMessage.get(), mb::Message::MSG_RESP_STREAM, this->getContentType());
+	mb::Service::initMessage(message.get(), responseMessage.get(), mb::Message::MSG_RESP_STREAM, this->getContentType());
 
 	response->initialize(responseMessage, this->getDelay());
 

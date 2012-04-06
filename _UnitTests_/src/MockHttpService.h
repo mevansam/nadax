@@ -39,8 +39,8 @@ public:
 	void intialize();
 	void destroy();
 
-	void pause(std::ostream& output);
-	void resume(std::istream& input);
+	virtual void pause(std::ostream* output = NULL) { };
+	virtual void resume(std::istream* input = NULL) { };
 
 	virtual void onMessage(mb::MessagePtr message);
 

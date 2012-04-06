@@ -35,6 +35,10 @@
 #include "pthread.h"
 #endif // UNIX
 
+#ifdef ANDROID
+#include <android/log.h>
+#endif
+
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -42,76 +46,80 @@
 #ifdef LOG_LEVEL_TRACE
 
 #define IS_TRACE  true
-#define IS_WARN   true
 #define IS_INFO   true
+#define IS_WARN   true
 #define IS_ERROR  true
 
-#define TRACE(...)  log("TRACE", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define WARN(...)   log("WARN", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define INFO(...)   log("INFO", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define ERROR(...)  log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define FATAL(...)  log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define AUDIT(...)  log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-
-#elif LOG_LEVEL_WARN
-
-#define IS_TRACE  false
-#define IS_WARN   true
-#define IS_INFO   true
-#define IS_ERROR  true
-
-#define TRACE(...)
-#define WARN(...)   log("WARN", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define INFO(...)   log("INFO", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define ERROR(...)  log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define FATAL(...)  log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define AUDIT(...)  log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define TRACE(...)  __log("TRACE", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define INFO(...)   __log("INFO", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define WARN(...)   __log("WARN", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define ERROR(...)  __log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define FATAL(...)  __log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define AUDIT(...)  __log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
 
 #elif LOG_LEVEL_INFO
 
 #define IS_TRACE  false
-#define IS_WARN   false
 #define IS_INFO   true
+#define IS_WARN   true
 #define IS_ERROR  true
 
 #define TRACE(...)
-#define WARN(...)
-#define INFO(...)   log("INFO", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define ERROR(...)  log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define FATAL(...)  log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define AUDIT(...)  log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define INFO(...)   __log("INFO", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define WARN(...)   __log("WARN", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define ERROR(...)  __log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define FATAL(...)  __log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define AUDIT(...)  __log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+
+#elif LOG_LEVEL_WARN
+
+#define IS_TRACE  false
+#define IS_INFO   false
+#define IS_WARN   true
+#define IS_ERROR  true
+
+#define TRACE(...)
+#define INFO(...)
+#define WARN(...)   __log("WARN", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define ERROR(...)  __log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define FATAL(...)  __log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define AUDIT(...)  __log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
 
 #elif LOG_LEVEL_ERROR
 
 #define IS_TRACE  false
-#define IS_WARN   false
 #define IS_INFO   false
+#define IS_WARN   false
 #define IS_ERROR  true
 
 #define TRACE(...)
-#define WARN(...)
 #define INFO(...)
-#define ERROR(...)  log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define FATAL(...)  log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define AUDIT(...)  log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define WARN(...)
+#define ERROR(...)  __log("ERROR", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define FATAL(...)  __log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define AUDIT(...)  __log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
 
 #else
 
 #define IS_TRACE  false
-#define IS_WARN   false
 #define IS_INFO   false
+#define IS_WARN   false
 #define IS_ERROR  false
 
 #define TRACE(...)
-#define WARN(...)
 #define INFO(...)
+#define WARN(...)
 #define ERROR(...)
-#define FATAL(...)  log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
-#define AUDIT(...)  log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define FATAL(...)  __log("FATAL", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+#define AUDIT(...)  __log("AUDIT", __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__)
 
 #endif // LOG_LEVELS
 
-inline void log(const char* pszLogLevel, const char* pszSource, const char* pszFunction, int nLineNumber, const char* pszFmtMssg, ...)
+#ifdef __cplusplus
+inline void __log(const char* pszLogLevel, const char* pszSource, const char* pszFunction, int nLineNumber, const char* pszFmtMssg, ...)
+#else
+inline static void __log(const char* pszLogLevel, const char* pszSource, const char* pszFunction, int nLineNumber, const char* pszFmtMssg, ...)
+#endif
 {
     char szLogContextMssg[100];
     szLogContextMssg[0] = 0;
@@ -148,7 +156,21 @@ inline void log(const char* pszLogLevel, const char* pszSource, const char* pszF
 	_vsnprintf(szMssg, sizeof(szMssg), pszFmtMssg, arglist);
 	va_end(arglist);
 
+#ifdef ANDROID
+
+	android_LogPriority priority = (
+		strcmp(pszLogLevel, "TRACE") == 0 ? ANDROID_LOG_VERBOSE :
+		strcmp(pszLogLevel, "INFO") == 0 ? ANDROID_LOG_INFO :
+		strcmp(pszLogLevel, "WARN") == 0 ? ANDROID_LOG_WARN :
+		strcmp(pszLogLevel, "ERROR") == 0 ? ANDROID_LOG_ERROR :
+		strcmp(pszLogLevel, "FATAL") == 0 ? ANDROID_LOG_FATAL :
+		strcmp(pszLogLevel, "AUDIT") == 0 ? ANDROID_LOG_SILENT : ANDROID_LOG_DEFAULT);
+
+	__android_log_print(priority, "NADAX", "%-6s>> %s; %s(%s:%d): %s\n", pszLogLevel, szLogContextMssg, pszSourceFileName, pszFunction, nLineNumber, szMssg);
+#else
 	printf("%-6s>> %s; %s(%s:%d): %s\n", pszLogLevel, szLogContextMssg, pszSourceFileName, pszFunction, nLineNumber, szMssg);
+#endif
+
 }
 
 #endif /* _LOG_H__INCLUDED_ */

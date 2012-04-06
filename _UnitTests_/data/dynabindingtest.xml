@@ -54,6 +54,18 @@
 				<z>h</z>
 			</y>
 		</detailitem>
+		<!-- "p" should not bind as key does not exist in <summary> -->
+        <detailitem id="p">
+            <detaildesc>pppppp ppppp ppppp</detaildesc>
+            <value1>010101.1</value1>
+            <value2>010101.2</value2>
+            <y>
+                <z>p</z>
+                <z>q</z>
+                <z>r</z>
+                <z>s</z>
+            </y>
+        </detailitem>
 		<detailitem id="c">
 			<detaildesc>ccccc ccccc ccccc</detaildesc>
 			<value1>33333.1</value1>
@@ -66,7 +78,7 @@
 			</y>
 		</detailitem>
 	</detail1>
-	
+
 	<detail2>
 		<y>
 			<id>a</id>

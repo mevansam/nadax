@@ -45,7 +45,7 @@ void HttpService::intialize() {
     size_t len = tmpl.length();
     size_t k, j, i = 0;
     
-    while (len) {
+    while (i < len) {
         
         if ((j = tmpl.find(TOKEN_BEGIN, i)) == std::string::npos) {
             
@@ -63,7 +63,6 @@ void HttpService::intialize() {
         // Template variable name
         m_template.push_back(tmpl.substr(j + 2, k - j - 2));
         
-        i = len - (k - i + 2);
         i = k + 2;
     }
     
@@ -133,8 +132,7 @@ void HttpService::onMessage(MessagePtr message) {
         
     } catch (...) {
         
-        ERROR( 
-            "Caught unknown exception while handling message for HTTP service with subject '%s'.", 
+        ERROR( "Caught unknown exception while handling message for HTTP service with subject '%s'.",
             this->getSubject() );
     }
 }

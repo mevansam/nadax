@@ -78,8 +78,8 @@ typedef boost::shared_ptr<Message> MessagePtr;
  * particular subject that is posted to the Message Bus.
  */
 class Listener {
-
 public:
+	virtual ~Listener() { }
 	virtual void onMessage(MessagePtr message) = 0;
 };
 
@@ -88,6 +88,7 @@ public:
  */
 class Provider {
 public:
+	virtual ~Provider() { }
 	virtual Message* createMessage() = 0;
 };
 

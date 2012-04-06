@@ -33,8 +33,7 @@
 #define WHITESPACE   "\t\r\n "
 
 #define XML_PARSE_TEST01  "./data/XmlParseTest01.xml"
-#define XML_PARSE_TEST02  "./data/XmlParseTest02.xml"
-#define XML_PARSE_TEST03  "./data/dynabindingtest.xml"
+#define XML_PARSE_TEST02  "./data/dynabindingtest.xml"
 
 using namespace binding;
 using namespace parser;
@@ -43,8 +42,8 @@ using namespace parser;
 class XmlBindingTest : public CppUnit::TestFixture {
 
 CPPUNIT_TEST_SUITE(XmlBindingTest);
-//CPPUNIT_TEST(testXmlStreamParser);
-//CPPUNIT_TEST(testXmlBinding);
+CPPUNIT_TEST(testXmlStreamParser);
+CPPUNIT_TEST(testXmlBinding);
 CPPUNIT_TEST(testGenericBinding);
 CPPUNIT_TEST_SUITE_END();
 
@@ -76,7 +75,7 @@ void XmlBindingTest::tearDown() {
 }
 
 
-class XmlEchoParser : public XmlStreamParser<XmlBinder> {
+class XmlEchoParser : public XmlStreamParser<XmlEchoParser> {
 
 public:
 
@@ -162,7 +161,7 @@ void XmlBindingTest::testXmlStreamParser() {
 	void* buffer;
 	buffer = xmlEchoParser.initialize(BUFFER_SIZE);
 
-	FILE* file = fopen(XML_PARSE_TEST02, "r");
+	FILE* file = fopen(XML_PARSE_TEST01, "r");
 	CPPUNIT_ASSERT_MESSAGE("Error opening test XML file.", file != NULL);
 
 	size_t len;
@@ -314,8 +313,9 @@ void XmlBindingTest::testGenericBinding() {
 
 	// Test Dyna Model Creation and Accessing
 
-	DynaModelNode node = DynaModel::create();
+	DynaModelNode node;
 
+	node = DynaModel::create();
 	DynaModelNode test1 = node->add("test1");
 	DynaModelNode test2 = node->add("test2", DynaModel::LIST);
 
@@ -341,8 +341,7 @@ void XmlBindingTest::testGenericBinding() {
 	DynaModelBinder dynaBinder;
 
 	dynaBinder.addBinding("*/overview/intro", DynaModel::VALUE, "i");
-	dynaBinder.addBinding("*/overview/terms", DynaModel::LIST, "t" );
-	dynaBinder.addBinding("*/overview/terms/line");
+	dynaBinder.addBinding("*/overview/terms/line", DynaModel::LIST, "t");
 	dynaBinder.addBinding("*/overview/legal", DynaModel::MAP, "l" );
 	dynaBinder.addBinding("*/overview/legal/header", "h" );
 	dynaBinder.addBinding("*/overview/legal/body", "b");
@@ -354,19 +353,22 @@ void XmlBindingTest::testGenericBinding() {
 	dynaBinder.addBinding("*/summary/sumitem/desc", "d");
 	dynaBinder.addBinding("*/summary/sumitem/value", "v");
 
-	dynaBinder.addBinding("*/detail1/detailitem", DynaModel::MAP, "di", "summary");
+	dynaBinder.addBinding("*/detail1/detailitem", DynaModel::MAP, "di1", "summary");
 	dynaBinder.addBinding("*/detail1/detailitem/@id", "k", true);
 	dynaBinder.addBinding("*/detail1/detailitem/value1", "v1");
 	dynaBinder.addBinding("*/detail1/detailitem/value2", "v2");
-	dynaBinder.addBinding("*/detail1/detailitem/y", DynaModel::LIST, "y");
-	dynaBinder.addBinding("*/detail1/detailitem/y/z");
+	dynaBinder.addBinding("*/detail1/detailitem/y/z", DynaModel::LIST, "y");
+
+	dynaBinder.addBinding("*/detail2/y", DynaModel::MAP, "di2", "summary");
+	dynaBinder.addBinding("*/detail2/y/id", "k", true);
+	dynaBinder.addBinding("*/detail2/y/x", "v1");
 
 	XmlBinder xmlBinder(&dynaBinder);
 
 	void* buffer;
 	buffer = xmlBinder.initialize(BUFFER_SIZE);
 
-	FILE* file = fopen(XML_PARSE_TEST03, "r");
+	FILE* file = fopen(XML_PARSE_TEST02, "r");
 	CPPUNIT_ASSERT_MESSAGE("Error opening test XML file.", file != NULL);
 
 	size_t len = 0;

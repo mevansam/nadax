@@ -3,6 +3,7 @@
 	<name>NadaxDataBinding</name>
 	<comment></comment>
 	<projects>
+		<project>NadaxUtility</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

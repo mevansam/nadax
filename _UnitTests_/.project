@@ -3,7 +3,12 @@
 	<name>_UnitTests_</name>
 	<comment></comment>
 	<projects>
-		<project>BindUtils</project>
+		<project>NadaxCacheService</project>
+		<project>NadaxDataBinding</project>
+		<project>NadaxHttpService</project>
+		<project>NadaxServiceBus</project>
+		<project>NadaxStreamService</project>
+		<project>NadaxUtility</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -9,7 +9,11 @@
 [Dd]ebug*/
 [Rr]elease*/
 
+_UnitTests_/data/cacerts
+_UnitTests_/data/certs.zip
+
 NadaxUtility/libs/bin/
+NadaxUtility/libs/sbin/
 NadaxUtility/libs/include/
 NadaxUtility/libs/lib/
 NadaxUtility/libs/tmp/
