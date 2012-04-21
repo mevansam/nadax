@@ -92,13 +92,10 @@ class MessageQueue;
 
 class MessageBusManager : protected Manager {
 
+SINGLETON_MANAGER(MessageBusManager)
+
 public:
 	virtual ~MessageBusManager();
-
-	static void initialize();
-	static void destroy();
-
-	static MessageBusManager* instance();
 
 	MessagePtr createMessage( 
         const char* subject, 
@@ -142,8 +139,8 @@ private:
 	boost::shared_mutex m_providersLock;
 	boost::shared_mutex m_servicesLock;
 
-	__gnu_cxx::hash_map<std::string, Provider*, mb::hashstr, mb::eqstr> m_providers;
-	__gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr> m_services;
+	boost::unordered_map<std::string, Provider*> m_providers;
+	boost::unordered_map<std::string, Service*> m_services;
 
 	struct MessageListener {
 
@@ -162,12 +159,10 @@ private:
 
 	std::list<MessageListener> m_listeners;
     std::list<MessageListener> m_passiveListeners;
-	__gnu_cxx::hash_map<std::string, std::list<Listener*>, mb::hashstr, mb::eqstr> m_activeListeners;
+	boost::unordered_map<std::string, std::list<Listener*> > m_activeListeners;
 
 	boost::shared_ptr<MessageQueue> m_messageQueue;
 	boost::shared_ptr<boost::thread> m_queueWorker;
-
-	static MessageBusManager* _manager;
     
     static std::list<SubjectRegisteredCallback> _subjectRegisteredCallbacks;
     static std::list<SubjectUnregisteredCallback> _subjectUnregisteredCallbacks;

@@ -293,7 +293,7 @@ void DataBinder::debug(const char* msg) {
 	std::cout << "Debug output for DataBinder instance '" << msg;
 	std::cout << "' : " << std::endl;
 
-	__gnu_cxx::hash_map<std::string, std::list<BeginRule>, hashstr, eqstr>::iterator i;
+	boost::unordered_map<std::string, std::list<BeginRule> >::iterator i;
 	std::list<BeginRule>::iterator j;
 
 	std::cout << "  Begin Rules: " << std::endl;
@@ -305,7 +305,7 @@ void DataBinder::debug(const char* msg) {
 		}
 	}
 
-	__gnu_cxx::hash_map<std::string, std::list<EndRule>, hashstr, eqstr>::iterator k;
+	boost::unordered_map<std::string, std::list<EndRule> >::iterator k;
 	std::list<EndRule>::iterator l;
 
 	std::cout << std::endl << "  End Rules: " << std::endl;

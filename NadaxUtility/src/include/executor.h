@@ -19,25 +19,44 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
+// Executor.h : Implementation of an executor that assigns a work item to
+// a pooled thread.
+//
 
-#include <boost/test/unit_test.hpp>
+#ifndef EXECUTOR_H_
+#define EXECUTOR_H_
 
-#include <iostream>
+#include "boost/asio.hpp"
+#include "boost/bind.hpp"
+#include "boost/thread.hpp"
 
-#include "Manager.h"
-#include "openssl_certs.h"
+class Executor {
+public:
 
-using namespace std;
-using namespace boost::unit_test;
+	Executor(size_t n)
+		: m_service(n), m_work(m_service) {
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )  {
+		std::size_t (boost::asio::io_service::*run)(void) = &boost::asio::io_service::run;
 
-	extractCerts("./data");
+		for (size_t i = 0; i < n; i++) {
+			m_pool.create_thread(boost::bind(run, &m_service));
+		}
+	}
 
-	cout << "Nadax Test Cases" << endl << endl;
+	~Executor() {
+		m_service.stop();
+		m_pool.join_all();
+	}
 
-//	mb::Manager::bringToForeground();
-//	mb::Manager::destroy();
+	template<typename F> void submit(F task) {
+		m_service.post(task);
+	}
 
-	return NULL;
-}
+protected:
+	boost::thread_group m_pool;
+	boost::asio::io_service m_service;
+	boost::asio::io_service::work m_work;
+};
+
+#endif /* EXECUTOR_H_ */

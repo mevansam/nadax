@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<messagebus-config>
+    
+    <service
+        name="loginService"
+        url="${LOGIN}"
+        type="curlhttp">
+        
+        <httpConfig
+	        timeout="60"
+	        contentType="text/xml"
+	        httpMethod="POST"/>
+        
+        <requestTemplate>
+            <![CDATA[
+                <FEBSEC>
+                <TXNID>0</TXNID>
+                <REQID>1</REQID>
+                <USERID>{{userId}}</USERID>
+                <PIN>{{pin}}</PIN>
+                </FEBSEC>
+            ]]>
+        </requestTemplate>
+        
+    </service>
+
+</messagebus-config>

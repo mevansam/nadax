@@ -24,7 +24,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <ext/hash_map>
+#include "boost/unordered_map.hpp"
 
 #include "boost/algorithm/string.hpp"
 
@@ -81,7 +81,7 @@ public:
 private:
 	DynaModel::Type m_type;
 
-	__gnu_cxx::hash_map<std::string, int, hashstr, eqstr> m_childRefs;
+	boost::unordered_map<std::string, int> m_childRefs;
 	std::vector<DynaModelNode> m_childNodes;
 
 	friend class DynaModelBinder;
@@ -148,8 +148,8 @@ std::list<std::string> Node::keys() {
 
 	std::list<std::string> keys;
 
-	__gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator i;
-	__gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator end = m_childRefs.end();
+	boost::unordered_map<std::string, int>::iterator i;
+	boost::unordered_map<std::string, int>::iterator end = m_childRefs.end();
 
 	for (i = m_childRefs.begin(); i != end; i++)
 		keys.push_back(i->first);
@@ -181,7 +181,7 @@ void Node::add(DynaModelNode node, const char* key) {
 
 	if (key) {
 
-		__gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator ref = m_childRefs.find(key);
+		boost::unordered_map<std::string, int>::iterator ref = m_childRefs.find(key);
 		if (ref != m_childRefs.end()) {
 
 			m_childNodes.erase(m_childNodes.begin() + ref->second);
@@ -203,7 +203,7 @@ DynaModelNode Node::add(const char* key, Type type) {
 
 	if (m_type == DynaModel::MAP) {
 
-		__gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator ref = m_childRefs.find(key);
+		boost::unordered_map<std::string, int>::iterator ref = m_childRefs.find(key);
 		if (ref == m_childRefs.end()) {
 
 			DynaModelNode dataNode = DynaModelNode(new Node(type));
@@ -261,7 +261,7 @@ void Node::setValue(const char* key, const char* value) {
 
 		DynaModelNode dataNode = DynaModelNode(new ValueNode(value));
 
-		__gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator ref = m_childRefs.find(key);
+		boost::unordered_map<std::string, int>::iterator ref = m_childRefs.find(key);
 		if (ref == m_childRefs.end()) {
 
 			m_childNodes.push_back(dataNode);
@@ -299,8 +299,8 @@ void Node::toJson(std::ostream& cout, int level) {
 
             cout << '{' << std::endl;
 
-            __gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator i = m_childRefs.begin();
-            __gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator end = m_childRefs.end();
+            boost::unordered_map<std::string, int>::iterator i = m_childRefs.begin();
+            boost::unordered_map<std::string, int>::iterator end = m_childRefs.end();
 
             while (i != end) {
 
@@ -360,8 +360,8 @@ void Node::toJson(std::ostream& cout, int level) {
 
             cout << '{';
 
-            __gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator i = m_childRefs.begin();
-            __gnu_cxx::hash_map<std::string, int, hashstr, eqstr>::iterator end = m_childRefs.end();
+            boost::unordered_map<std::string, int>::iterator i = m_childRefs.begin();
+            boost::unordered_map<std::string, int>::iterator end = m_childRefs.end();
 
             while (i != end) {
 
@@ -820,9 +820,9 @@ void DynaModelBinder::bindValue(void* binder, const char* element, const char* b
                     }
                 }
                 
-                if ( parseRule->valueMapping.size() > 0 && 
+                if ( parseRule->valueMapping.size() > 0 &&
                     parseRule->valueMapping.find(parsedValue) != parseRule->valueMapping.end() ) {
-                    
+
                     curr->setValue(parseRule->key.c_str(), parseRule->valueMapping[parsedValue].c_str());
                 } else
                     curr->setValue(parseRule->key.c_str(), parsedValue.c_str());

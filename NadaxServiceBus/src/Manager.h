@@ -25,6 +25,11 @@
 
 #include <list>
 
+#include <boost/thread/mutex.hpp>
+
+#include "log.h"
+#include "exception.h"
+
 
 namespace mb {
 
@@ -72,5 +77,44 @@ private:
     
 
 }  // namespace : mb
+
+
+#define SINGLETON_MANAGER(type_name) \
+	public: \
+		static void initialize(); \
+		static void destroy(); \
+		static type_name* instance(); \
+	private: \
+		static type_name* _manager; \
+		static boost::mutex _manager_destroy_lock;
+
+
+#define SINGLETON_MANAGER_IMPLEMENTATION(type_name, exception_name) \
+	class exception_name : public CException { \
+	public: \
+		exception_name(const char* source, int lineNumber) : CException(source, lineNumber) { } \
+		virtual ~exception_name() { } \
+	}; \
+	type_name* type_name::_manager = NULL; \
+	boost::mutex type_name::_manager_destroy_lock; \
+	void type_name::initialize() { \
+		if (type_name::_manager) { \
+			TRACE(#type_name " singleton already initialized. Ignoring initialize()"); \
+			return; \
+		} \
+		type_name::_manager = new type_name(); \
+	} \
+	void type_name::destroy() { \
+		boost::mutex::scoped_lock lock(type_name::_manager_destroy_lock); \
+		if (type_name::_manager) \
+			delete type_name::_manager; \
+			type_name::_manager = NULL; \
+	} \
+	type_name* type_name::instance() { \
+		if (!type_name::_manager) \
+			THROW(exception_name, EXCEP_MSSG(#type_name " singleton has not been initialized.")); \
+		return type_name::_manager; \
+	}
+
 
 #endif /* _MANAGER_H__INCLUDED_ */

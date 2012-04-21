@@ -35,6 +35,7 @@
 									<listOptionValue builtIn="false" value="soci_sqlite3"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="boost_regex"/>
+									<listOptionValue builtIn="false" value="boost_unit_test_framework"/>
 									<listOptionValue builtIn="false" value="NadaxUtility"/>
 									<listOptionValue builtIn="false" value="NadaxDataBinding"/>
 									<listOptionValue builtIn="false" value="NadaxServiceBus"/>
@@ -112,6 +113,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221.265287925" name="UnitTests.cpp" rcbsApplicability="disable" resourcePath="src/UnitTests.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.1270448912.777242512">
+						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.1270448912.777242512" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.1270448912"/>
+					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>

@@ -25,7 +25,7 @@
 
 #include <list>
 #include <map>
-#include <ext/hash_map>
+#include "boost/unordered_map.hpp"
 #include <string>
 #include <sstream>
 
@@ -42,17 +42,6 @@
 
 namespace binding {
 
-
-struct hashstr {
-	size_t operator()(const std::string& str) const {
-		return __gnu_cxx::hash<const char*>()(str.c_str());
-	}
-};
-struct eqstr {
-	bool operator()(const std::string& s1, const std::string& s2) const {
-		return s1 == s2;
-	}
-};
 
 class DataBinder;
 typedef boost::shared_ptr<DataBinder> DataBinderPtr;
@@ -147,8 +136,8 @@ protected:
 
 private:
 
-    __gnu_cxx::hash_map<std::string, std::list<BeginRule>, hashstr, eqstr> m_beginRules;
-    __gnu_cxx::hash_map<std::string, std::list<EndRule>, hashstr, eqstr> m_endRules;
+    boost::unordered_map<std::string, std::list<BeginRule> > m_beginRules;
+    boost::unordered_map<std::string, std::list<EndRule> > m_endRules;
 
     std::stringstream m_body;
 
@@ -156,7 +145,7 @@ private:
     bool m_addTextToBody;
     bool m_bodyIsCData;
 
-    __gnu_cxx::hash_map<std::string, std::string, hashstr, eqstr> m_variables;
+    boost::unordered_map<std::string, std::string> m_variables;
     
     boost::shared_mutex m_bindingLock;
     bool m_binding;

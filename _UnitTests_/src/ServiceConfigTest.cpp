@@ -20,24 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#include <stdio.h>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+
 #include <boost/test/unit_test.hpp>
 
-#include <iostream>
+#include "ServiceConfigManager.h"
+#include "CurlHttpService.h"
 
-#include "Manager.h"
-#include "openssl_certs.h"
 
-using namespace std;
-using namespace boost::unit_test;
+BOOST_AUTO_TEST_CASE( service_config_test ) {
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )  {
+	std::cout << "Begin service config test..." /*<< _curlHttpServiceInit*/ << std::endl;
 
-	extractCerts("./data");
-
-	cout << "Nadax Test Cases" << endl << endl;
-
-//	mb::Manager::bringToForeground();
-//	mb::Manager::destroy();
-
-	return NULL;
+	mb::ServiceConfigManager::initialize();
+//	std::cout << "Touch..." << mb::ServiceConfigManager::touch() << std::endl;
 }

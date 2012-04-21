@@ -28,13 +28,20 @@
 
 #include <list>
 #include <map>
-#include <ext/hash_map>
 
 #include "boost/shared_ptr.hpp"
+#include "boost/unordered_map.hpp"
 
 #include "log.h"
 #include "uuid.h"
-#include "DataBinder.h"
+#include "DynaModel.h"
+
+#ifndef CSTR_TRUE
+#define CSTR_TRUE   "true"
+#endif
+#ifndef CSTR_FALSE
+#define CSTR_FALSE  "false"
+#endif
 
 #define SUBSCRIPTION_ID     "SUBSCRIPTION_ID"
 #define DATA_IS_DYNA_MODEL  "IS_DYNA_MODEL"
@@ -57,19 +64,6 @@
 
 
 namespace mb {
-
-/* String hash function for a gnu::hash_map */
-struct hashstr {
-	size_t operator()(const std::string& str) const {
-		return __gnu_cxx::hash<const char*>()(str.c_str());
-	}
-};
-/* String equals function for a gnu::hash_map */
-struct eqstr {
-	bool operator()(const std::string& s1, const std::string& s2) const {
-		return s1 == s2;
-	}
-};
 
 class Message;
 typedef boost::shared_ptr<Message> MessagePtr;
@@ -109,7 +103,7 @@ typedef void (*MessageCleanupCallback)(Message* message);
 
 /* STL map of string name value pairs.
  */
-typedef __gnu_cxx::hash_map<std::string, std::string, hashstr, eqstr> NameValueMap;
+typedef boost::unordered_map<std::string, std::string> NameValueMap;
 
 /* Base message structure. The Message Bus will create
  * a particular instance of a Message given a subject
@@ -622,7 +616,7 @@ private:
 class P2PNVMessage : public P2PMessage {
     
 public:
-    typedef __gnu_cxx::hash_map<std::string, MessagePtr, hashstr, eqstr> MessageMap;
+    typedef boost::unordered_map<std::string, MessagePtr> MessageMap;
 
 public:
 	P2PNVMessage() : P2PMessage() {
@@ -745,6 +739,12 @@ public:
 	 * was paused.
 	 */
 	virtual void resume(std::istream* input = NULL) = 0;
+
+	/* Dynamic binding configuration for services
+	 * that a configured for binding using a xml
+	 * binding rule set.
+	 */
+	virtual void setBindingConfig(binding::DynaModelBindingConfigPtr bindingConfig) { }
 
 protected:
 

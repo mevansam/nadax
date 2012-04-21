@@ -29,21 +29,18 @@
 
 #include "boost/date_time/posix_time/posix_time_types.hpp"
 
-#include "exception.h"
 #include "number.h"
 #include "DataBinder.h"
 #include "Unmarshaller.h"
 #include "XmlStreamParser.h"
 
-#define MESSAGE_BUS_MANAGER_INITIALIZED      "Message bus manager has already been initialized."
-#define MESSAGE_BUS_MANAGER_NOT_INITIALIZED  "Message bus manager has not been initialized."
-#define PROVIDER_FOR_SUBJECT_EXISTS          "A provider for the subject '%s' already exists."
-#define SERVICE_FOR_SUBJECT_EXISTS           "A service for the subject '%s' already exists."
-#define LISTENER_ALREADY_ADDED               "Listener has already been added to the subject '%s'."
-#define SUBJECT_REGEX_ERROR                  "Subject regex search pattern for listener is invalid: %s"
-#define CAN_ONLY_SEND_P2P_MESSAGES           "Only P2P messages can be sent via sendMessage()."
-#define INVALID_CALLBACK_LISTENER            "Invalid call back Listener applied to a P2P Message."
-#define RESPONSE_BINDER_IS_LOCKED            "A prior response for the same subject is still being bound."
+#define PROVIDER_FOR_SUBJECT_EXISTS  "A provider for the subject '%s' already exists."
+#define SERVICE_FOR_SUBJECT_EXISTS   "A service for the subject '%s' already exists."
+#define LISTENER_ALREADY_ADDED       "Listener has already been added to the subject '%s'."
+#define SUBJECT_REGEX_ERROR          "Subject regex search pattern for listener is invalid: %s"
+#define CAN_ONLY_SEND_P2P_MESSAGES   "Only P2P messages can be sent via sendMessage()."
+#define INVALID_CALLBACK_LISTENER    "Invalid call back Listener applied to a P2P Message."
+#define RESPONSE_BINDER_IS_LOCKED    "A prior response for the same subject is still being bound."
 
 #define SEARCH_CHARS  "[]*+."
 
@@ -436,49 +433,12 @@ private:
 std::list<ActivityCallback> MessageQueue::_activityCallbacks[Message::NUM_TYPES];
 
 
-// **** Message Bus exception type ****
+// **** Static Implementation ****
 
-class MessageBusException : public CException {
-    
-public:
-    MessageBusException(const char* source, int lineNumber) : CException(source, lineNumber) { }
-    virtual ~MessageBusException() { }
-};
-
-
-// **** Static Singleton Initializer and Accessor ****
-
-MessageBusManager* MessageBusManager::_manager = NULL;
+SINGLETON_MANAGER_IMPLEMENTATION(MessageBusManager, MessageBusException)
 
 std::list<SubjectRegisteredCallback> MessageBusManager::_subjectRegisteredCallbacks;
 std::list<SubjectUnregisteredCallback> MessageBusManager::_subjectUnregisteredCallbacks;
-
-
-void MessageBusManager::initialize() {
-    
-    if (_manager) {
-        
-        TRACE("MessageBus already initialized. Ignoring initialize()");
-        return;
-    }
-    MessageBusManager::_manager = new MessageBusManager();
-}
-
-void MessageBusManager::destroy() {
-    
-    if (_manager)
-        delete MessageBusManager::_manager;
-    
-    _manager = NULL;
-}
-
-MessageBusManager* MessageBusManager::instance() {
-    
-    if (!_manager)
-        THROW(MessageBusException, EXCEP_MSSG(MESSAGE_BUS_MANAGER_NOT_INITIALIZED));
-    
-    return MessageBusManager::_manager;
-}
 
 void MessageBusManager::addSubjectRegisteredCallback(SubjectRegisteredCallback callback) {
     
@@ -508,15 +468,13 @@ MessageBusManager::~MessageBusManager() {
     
     m_messageQueue->stop();
     m_queueWorker->join();
-    
-    _manager = NULL;
 }
 
 void MessageBusManager::foreground() {
     
     { boost::shared_lock<boost::shared_mutex> lock(m_servicesLock);
         
-        __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator i;
+        boost::unordered_map<std::string, Service*>::iterator i;
         
         for (i = m_services.begin(); i != m_services.end(); i++)
             i->second->resume(NULL);
@@ -529,7 +487,7 @@ bool MessageBusManager::background() {
     
     { boost::shared_lock<boost::shared_mutex> lock(m_servicesLock);
         
-        __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator i;
+        boost::unordered_map<std::string, Service*>::iterator i;
         
         for (i = m_services.begin(); i != m_services.end(); i++)
             i->second->pause(NULL);
@@ -583,7 +541,7 @@ MessagePtr MessageBusManager::sendMessage(MessagePtr message) {
         
         { boost::shared_lock<boost::shared_mutex> lock(m_servicesLock);
             
-            __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator element = m_services.find(subject);
+            boost::unordered_map<std::string, Service*>::iterator element = m_services.find(subject);
             serviceListener = (element != m_services.end() ? element->second : NULL);
         }
         
@@ -620,7 +578,7 @@ int MessageBusManager::postMessage(MessagePtr message, Listener* callback) {
         
         { boost::shared_lock<boost::shared_mutex> lock(m_servicesLock);
             
-            __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator element = m_services.find(subject);
+            boost::unordered_map<std::string, Service*>::iterator element = m_services.find(subject);
             if (element == m_services.end())
                 return 0;
             
@@ -859,7 +817,7 @@ void MessageBusManager::unregisterProvider(Provider* provider) {
     
     boost::unique_lock<boost::shared_mutex> lock(m_providersLock);
     
-    __gnu_cxx::hash_map<std::string, Provider*, mb::hashstr, mb::eqstr>::iterator i;
+    boost::unordered_map<std::string, Provider*>::iterator i;
     for (i = m_providers.begin(); i != m_providers.end(); i++) {
         
         if (i->second == provider) {
@@ -899,7 +857,7 @@ void MessageBusManager::unregisterService(Service* service) {
     
     { boost::unique_lock<boost::shared_mutex> lock(m_servicesLock);
         
-        __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator i = m_services.find(subject);
+        boost::unordered_map<std::string, Service*>::iterator i = m_services.find(subject);
         
         if (i != m_services.end()) {
             unregisterProvider(service);
@@ -1023,7 +981,7 @@ void MessageBusManager::debug(const char* msg) {
         std::cout << "    * " << temp << std::endl;
     }
     
-    __gnu_cxx::hash_map<std::string, std::list<Listener*>, mb::hashstr, mb::eqstr>::iterator k;
+    boost::unordered_map<std::string, std::list<Listener*> >::iterator k;
     
     std::cout << "  Active Listeners: " << std::endl;
     for (k = m_activeListeners.begin(); k != m_activeListeners.end(); k++) {
@@ -1037,7 +995,7 @@ void MessageBusManager::debug(const char* msg) {
         }
     }
     
-    __gnu_cxx::hash_map<std::string, Provider*, mb::hashstr, mb::eqstr>::iterator m;
+    boost::unordered_map<std::string, Provider*>::iterator m;
     
     std::cout << "  Providers: " << std::endl;
     for (m = m_providers.begin(); m != m_providers.end(); m++) {
@@ -1045,7 +1003,7 @@ void MessageBusManager::debug(const char* msg) {
         std::cout << "    * " << m->first << temp << std::endl;
     }
     
-    __gnu_cxx::hash_map<std::string, Service*, mb::hashstr, mb::eqstr>::iterator n;
+    boost::unordered_map<std::string, Service*>::iterator n;
     
     std::cout << "  Services: " << std::endl;
     for (n = m_services.begin(); n != m_services.end(); n++) {

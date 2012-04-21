@@ -19,25 +19,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
+// SSLInit.h : OpenSSL initialization.
+//
 
-#include <boost/test/unit_test.hpp>
+#ifndef SSL_INIT_H_
+#define SSL_INIT_H_
 
-#include <iostream>
 
-#include "Manager.h"
-#include "openssl_certs.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-using namespace std;
-using namespace boost::unit_test;
+void init_locks();
+void kill_locks();
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )  {
+#ifdef __cplusplus
+} /* closing brace for extern "C" */
+#endif
 
-	extractCerts("./data");
 
-	cout << "Nadax Test Cases" << endl << endl;
-
-//	mb::Manager::bringToForeground();
-//	mb::Manager::destroy();
-
-	return NULL;
-}
+#endif /* SSL_INIT_H_ */

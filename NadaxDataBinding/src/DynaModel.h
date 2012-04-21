@@ -37,9 +37,10 @@ namespace binding {
 
 
 class DynaModel;
-class DynaModelBinder;
+class DynaModelBindingConfig;
 
 typedef boost::shared_ptr<DynaModel> DynaModelNode;
+typedef boost::shared_ptr<DynaModelBindingConfig> DynaModelBindingConfigPtr;
 
 
 class DynaModel {
@@ -124,20 +125,37 @@ private:
 	std::string m_ref;
 	bool m_isIdx;
 	DynaModel::Type m_type;
-    
-    struct ParseRule {
-        
-        int offset;
-        char delim;
-        int length;
-        
-        std::string strip;
-        std::string replace;
 
-        std::string key;
-        
-        __gnu_cxx::hash_map<std::string, std::string, hashstr, eqstr> valueMapping;
-    };
+	struct ParseRule {
+
+		ParseRule& operator=(const ParseRule& value) const {
+
+			ParseRule* rule = const_cast<ParseRule*>(&value);
+			const_cast<ParseRule*>(this)->offset = rule->offset;
+			const_cast<ParseRule*>(this)->delim = rule->delim;
+			const_cast<ParseRule*>(this)->length = rule->length;
+			const_cast<ParseRule*>(this)->strip = rule->strip;
+			const_cast<ParseRule*>(this)->replace = rule->replace;
+			const_cast<ParseRule*>(this)->valueMapping.insert(rule->valueMapping.begin(), rule->valueMapping.end());
+
+			return *(const_cast<ParseRule*>(this));
+		}
+
+		void copy(ParseRule* rule) {
+
+		}
+
+	    int offset;
+	    char delim;
+	    int length;
+
+	    std::string strip;
+	    std::string replace;
+
+	    std::string key;
+
+	    boost::unordered_map<std::string, std::string> valueMapping;
+	};
     
     std::list<ParseRule> m_parseRules;
 
@@ -201,7 +219,7 @@ public:
 	static void bindValue(void* binder, const char *element, const char *body);
 
 private:
-	__gnu_cxx::hash_map<std::string, DynaModelBinding, hashstr, eqstr> m_bindingMap;
+	boost::unordered_map<std::string, DynaModelBinding> m_bindingMap;
 
 	std::stack<DynaModelNode> m_bindingNode;
 	const DynaModelBinding* m_listBindingProcessed;

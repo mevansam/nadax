@@ -35,12 +35,12 @@
 #include <sys/stat.h>
 
 
-class CFile
+class File
 {
 public:
-	CFile();
-	CFile(const char* path);
-	virtual ~CFile();
+	File();
+	File(const char* path);
+	virtual ~File();
 
 	const char* getPath();
 	void setPath(const char* path);
@@ -60,33 +60,33 @@ private:
 
 // **** Implementation ***
 
-inline CFile::CFile()
+inline File::File()
 {
 	m_filePath = NULL;
 }
 
-inline CFile::CFile(const char* path)
+inline File::File(const char* path)
 {
 	m_filePath = strdup(path);
 }
 
-inline CFile::~CFile()
+inline File::~File()
 {
 	if (m_filePath)
 		free(m_filePath);
 }
 
-inline const char* CFile::getPath()
+inline const char* File::getPath()
 {
 	return m_filePath;
 }
 
-inline void CFile::setPath(const char* path)
+inline void File::setPath(const char* path)
 {
 	m_filePath = strdup(path);
 }
 
-inline bool CFile::exists()
+inline bool File::exists()
 {
 	bool fileExists = false;
 	struct stat fileStat;
@@ -101,7 +101,7 @@ inline bool CFile::exists()
 	return fileExists;
 }
 
-inline time_t CFile::lastAccessed()
+inline time_t File::lastAccessed()
 {
 	time_t lastAccessed = 0;
 
@@ -119,7 +119,7 @@ inline time_t CFile::lastAccessed()
 	return lastAccessed;
 }
 
-inline time_t CFile::lastModified()
+inline time_t File::lastModified()
 {
 	time_t lastModified = 0;
 
@@ -137,7 +137,7 @@ inline time_t CFile::lastModified()
 	return lastModified;
 }
 
-inline bool CFile::rm()
+inline bool File::rm()
 {
 	return (remove(m_filePath) != -1);
 }
