@@ -32,9 +32,11 @@
 
 #include "boost/shared_ptr.hpp"
 #include "boost/unordered_map.hpp"
+#include "boost/unordered_set.hpp"
 
 #include "log.h"
 #include "uuid.h"
+
 #include "DynaModel.h"
 
 #ifndef CSTR_TRUE
@@ -712,6 +714,13 @@ class Service : public Provider, public Listener {
 public:
 	virtual ~Service() { }
 
+	/* Checks if this service is associated with the
+	 * given service type identifier.
+	 */
+	bool isType(const char* type) {
+		return (m_types.find(type) != m_types.end());
+	}
+
 	/* A service will always be associated
 	 * with only one subject and this cannot
 	 * be changed over its lifetime.
@@ -760,9 +769,6 @@ public:
 
 protected:
 
-	virtual void log(std::ostream& cout) {
-	}
-
 	void initMessage( Message* message,
 		Message::MessageType type = Message::MSG_P2P,
 		Message::ContentType cntType = Message::CNT_UNKNOWN,
@@ -782,6 +788,23 @@ protected:
 		response->m_cntType = cntType;
 		response->m_dataBinder = request->m_dataBinder;
 	}
+
+	void setType(const char* type) {
+		m_types.insert(m_types.begin(), type);
+	}
+
+	virtual void log(std::ostream& cout) {
+
+		cout << "\tType - ";
+		for (boost::unordered_set<std::string>::iterator i = m_types.begin(); i != m_types.end(); i++) {
+			cout << *i << "::";
+		}
+		cout << std::endl;
+	}
+
+private:
+
+	boost::unordered_set<std::string> m_types;
 };
 
 

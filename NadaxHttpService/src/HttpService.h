@@ -23,9 +23,14 @@
 #ifndef HTTPSERVICE_H_
 #define HTTPSERVICE_H_
 
+#include <string>
 #include <iostream>
 #include <list>
 
+#include "staticinit.h"
+#include "number.h"
+
+#include "ServiceConfigManager.h"
 #include "Service.h"
 
 
@@ -149,17 +154,21 @@ private:
 class HttpService : public Service
 {
 
-public:
-	HttpService();
-	virtual ~HttpService();
+STATIC_INIT_DECLARATION(HttpService)
 
-	virtual const char* getSubject() = 0;
+public:
+	HttpService(const std::string& subject, const std::string& url);
+	virtual ~HttpService();
     
 	virtual Message* createMessage() {
 		Message* message = new HttpMessage(HttpMessage::POST);
 		Service::initMessage(message, Message::MSG_P2P, Message::CNT_XML);
 		return message;
 	}
+
+	virtual const char* getSubject() {
+        return m_subject.c_str();
+    }
 
     void intialize();
     void destroy();
@@ -172,16 +181,48 @@ public:
 
     void onMessage(MessagePtr message);
     
-    virtual const char* getTemplate() = 0;
+    virtual const char* getTemplate() {
+        return m_template.c_str();
+    }
+
     virtual void addEnvVars(std::list<Message::NameValue>& envVars) = 0;
     
     virtual void execute(MessagePtr message, std::string& request) = 0;
 
-private:
+    // XML Configuration bindings
+
+    static void initService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
+    static void addHeader(void* binder, const char* element, std::map<std::string, std::string>& attribs);
+    static void addRequestTemplate(void* binder, const char* element, const char* body);
+
+protected:
+
+    void log(std::ostream& cout);
+
+    std::string m_subject;
+    std::string m_url;
+    int m_timeout;
+
+    HttpMessage::HttpMethod m_method;
+    Message::ContentType m_contentType;
+
+    std::string m_template;
 
     std::list<Message::NameValue> m_envVars;
-    std::list<std::string> m_template;
+    std::list<std::string> m_templateTokens;
+
+    std::list<Message::NameValue> m_headers;
+
+    std::string m_streamSubject;
+    std::string m_streamKey;
+    std::string m_streamDoNotSnap;
+    bool m_subscribeAndSnap;
+
+    Number<bool> m_subscriptionEnabled;
+
 };
+
+STATIC_INIT_CALL(HttpService)
 
 
     }  // namespace : http

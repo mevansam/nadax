@@ -23,11 +23,10 @@
 #ifndef CURLHTTPSERVICE_H_
 #define CURLHTTPSERVICE_H_
 
-#include <string>
+#include "staticinit.h"
 
-#include "Number.h"
 #include "HttpService.h"
-#include "ServiceConfigManager.h"
+
 
 namespace mb {
 	namespace http {
@@ -41,14 +40,6 @@ public:
 	CurlHttpService(const std::string& subject, const std::string& url);
 	virtual ~CurlHttpService();
 
-    const char* getSubject() {
-        return m_subject.c_str();
-    }
-
-    const char* getTemplate() {
-        return m_template.c_str();
-    }
-
     Message* createMessage();
     void addEnvVars(std::list<Message::NameValue>& envVars);
     void execute(MessagePtr message, std::string& request);
@@ -56,32 +47,9 @@ public:
     // XML Configuration bindings
 
     static void createService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
-    static void initService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
-    static void addHeader(void* binder, const char* element, std::map<std::string, std::string>& attribs);
-    static void addRequestTemplate(void* binder, const char* element, const char* body);
 
 private:
 
-    void log(std::ostream& cout);
-
-    std::string m_subject;
-
-    std::string m_url;
-    int m_timeout;
-
-    HttpMessage::HttpMethod m_method;
-    Message::ContentType m_contentType;
-
-    std::string m_template;
-
-    std::list<Message::NameValue> m_headers;
-
-    std::string m_streamSubject;
-    std::string m_streamKey;
-    std::string m_streamDoNotSnap;
-    bool m_subscribeAndSnap;
-
-    Number<bool> m_subscriptionEnabled;
 };
 
 STATIC_INIT_CALL(CurlHttpService)

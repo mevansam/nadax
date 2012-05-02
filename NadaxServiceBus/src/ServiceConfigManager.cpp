@@ -54,10 +54,12 @@ public:
 		unsigned int i;
 		for (i = 0; i < ServiceConfigManager::_beginConfigBindings.size(); i++) {
 			BeginConfigBinding* binding = ServiceConfigManager::_beginConfigBindings[i];
+			TRACE("Adding begin config binding rule for path: %s", binding->m_pathStr.c_str());
 			ServiceConfigBinder::addBeginRule(binding->m_pathStr.c_str(), binding->m_callback);
 		}
 		for (i = 0; i < ServiceConfigManager::_endConfigBindings.size(); i++) {
 			EndConfigBinding* binding = ServiceConfigManager::_endConfigBindings[i];
+			TRACE("Adding end config binding rule for path: %s", binding->m_pathStr.c_str());
 			ServiceConfigBinder::addEndRule(binding->m_pathStr.c_str(), binding->m_callback);
 		}
 

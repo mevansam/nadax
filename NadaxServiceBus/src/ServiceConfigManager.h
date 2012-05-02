@@ -42,38 +42,11 @@
 
 #include "boost/iostreams/filtering_stream.hpp"
 
+#include "staticinit.h"
+
 #include "Manager.h"
 #include "DataBinder.h"
 #include "Service.h"
-
-/** @defgroup Class/Service static initializing macros
- *
- * These macros should be defined within the class declaration, outside the
- * class in the header and within the class implementation, to ensure that
- * static symbols are initialized. It also calls a static class method
- * _static_init() which can be implemented with additional static
- * initialization logic.
- *
- *  @{
- */
-
-#define STATIC_INIT_DECLARATION(className) \
-	public: \
-		static bool __static_init() { \
-			static bool _initialized = false; \
-			static boost::mutex _mutex; \
-			boost::mutex::scoped_lock lock(_mutex); \
-			if (!_initialized) { \
-				TRACE(#className " static state being initialized...");  \
-				_initialized = className::_static_init(); \
-			} \
-			return _initialized; \
-		}; \
-		static bool _static_init();
-#define STATIC_INIT_CALL(className) \
-	static bool _init##className##Result = className::__static_init();
-#define STATIC_INIT_NULL_IMPL(className) \
-	bool className::_static_init() { _init##className##Result = false; return true; }
 
 /** @} */
 
