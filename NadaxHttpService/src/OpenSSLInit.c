@@ -50,13 +50,13 @@ static void lock_callback(int mode, int type, char* file, int line) {
 	}
 }
 
-static unsigned long thread_id()
-{
+static unsigned long thread_id() {
+
 	return (unsigned long) pthread_self();
 }
 
-void init_locks()
-{
+void init_locks() {
+
 	lockarray = (pthread_mutex_t *) OPENSSL_malloc(CRYPTO_num_locks() * sizeof(pthread_mutex_t));
 
 	int i;
@@ -68,8 +68,8 @@ void init_locks()
 	CRYPTO_set_locking_callback((void (*)()) lock_callback);
 }
 
-void kill_locks()
-{
+void kill_locks() {
+
 	CRYPTO_set_locking_callback(NULL);
 
 	int i;
