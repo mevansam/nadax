@@ -12,6 +12,10 @@
 	        contentType="text/xml"
 	        httpMethod="POST"/>
         
+        <headers>
+            <header name="TEST_HEADER" value="Test Header Value"/>
+		</headers>
+        
         <requestTemplate>
             <![CDATA[
                 <FEBSEC>

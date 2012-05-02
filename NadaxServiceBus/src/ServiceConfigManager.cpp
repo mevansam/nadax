@@ -29,9 +29,18 @@
 
 #include "ServiceConfigManager.h"
 
+#include "boost/iostreams/device/file.hpp"
+#include "boost/iostreams/filter/regex.hpp"
+#include "boost/regex.hpp"
+
 #include "DynaModel.h"
+#include "XmlStreamParser.h"
+#include "MessageBusManager.h"
+
+#define BUFFER_SIZE  1024
 
 using namespace binding;
+using namespace parser;
 
 
 namespace mb {
@@ -40,9 +49,17 @@ namespace mb {
 class ServiceConfigBinder : public ServiceConfig {
 
 public:
-	ServiceConfigBinder(ServiceConfigManager* manager) {
+	ServiceConfigBinder() {
 
-		m_manager = manager;
+		unsigned int i;
+		for (i = 0; i < ServiceConfigManager::_beginConfigBindings.size(); i++) {
+			BeginConfigBinding* binding = ServiceConfigManager::_beginConfigBindings[i];
+			ServiceConfigBinder::addBeginRule(binding->m_pathStr.c_str(), binding->m_callback);
+		}
+		for (i = 0; i < ServiceConfigManager::_endConfigBindings.size(); i++) {
+			EndConfigBinding* binding = ServiceConfigManager::_endConfigBindings[i];
+			ServiceConfigBinder::addEndRule(binding->m_pathStr.c_str(), binding->m_callback);
+		}
 
 		ServiceConfigBinder::addBeginRule("*/bindings", beginBindingsConfig);
 		ServiceConfigBinder::addBeginRule("*/bind", beginBindConfig);
@@ -50,6 +67,7 @@ public:
 		ServiceConfigBinder::addBeginRule("*/bind/parse/mapping", beginBindParseValueMapping);
 		ServiceConfigBinder::addEndRule("*/bind", endBindConfig);
 		ServiceConfigBinder::addEndRule("*/bindings", endBindingsConfig);
+		ServiceConfigBinder::addEndRule("messagebus-config/service", endServiceConfig);
 	}
 
     void beginBinding() {
@@ -60,7 +78,8 @@ public:
     void addService(Service* service) {
 
     	TRACE("Binding service '%s' configuration details...", service->getSubject());
-    	m_manager->m_services[service->getSubject()] = boost::shared_ptr<Service>(service);
+    	((ServiceConfigManager *) this->getRoot())->m_services[service->getSubject()] = boost::shared_ptr<Service>(service);
+    	m_service = service;
     }
 
     static void beginBindingsConfig(void* binder, const char* element, std::map<std::string, std::string>& attribs) {
@@ -107,10 +126,57 @@ public:
         dataBinder->m_bindingConfig.reset();
     }
 
+    static void endServiceConfig(void* binder, const char* element, const char* body) {
+
+        GET_BINDER(ServiceConfigBinder);
+
+        Service* service = dataBinder->getService();
+
+#ifdef LOG_LEVEL_TRACE
+        std::ostringstream output;
+        output << *service;
+        TRACE("Registering service:\n%s", output.str().c_str());
+#endif
+
+        MessageBusManager* mb = MessageBusManager::instance();
+        mb->registerService(service);
+    }
+
 private:
 
-    ServiceConfigManager* m_manager;
     DynaModelBindingConfigPtr m_bindingConfig;
+};
+
+// **** Callback for token filter ****
+
+/**
+ * Boost wrapper for resolving token values when reading the stream.
+ * The boost callback simply calls out to the provided token value
+ * callback.
+ */
+struct TokenResolver {
+
+	std::string operator()(const boost::match_results<const char*>& match) {
+
+		std::string name(match[0].first + 2, match[0].length() - 3);
+
+		boost::unordered_map<std::string, std::string>::iterator token = m_tokens->find(name);
+		if (token != m_tokens->end())
+			return token->second;
+
+		std::string value;
+		if (m_callback)
+			m_callback(name.c_str(), value);
+		return value;
+	}
+
+	TokenResolver(boost::unordered_map<std::string, std::string>* tokens, TokenResolverCallback callback) {
+		m_tokens = tokens;
+		m_callback = callback;
+	}
+
+	TokenResolverCallback m_callback;
+	boost::unordered_map<std::string, std::string>* m_tokens;
 };
 
 
@@ -125,10 +191,18 @@ SINGLETON_MANAGER_IMPLEMENTATION(ServiceConfigManager, ServiceConfigException)
 std::vector<BeginConfigBinding*> ServiceConfigManager::_beginConfigBindings;
 std::vector<EndConfigBinding*> ServiceConfigManager::_endConfigBindings;
 
+static boost::regex __tokenPattern("\\$\\{[-+_a-zA-Z0-9]+\\}");
+
 ServiceConfigManager::ServiceConfigManager() {
+
+	// Start up message bus manager
+	mb::MessageBusManager::initialize();
 }
 
 ServiceConfigManager::~ServiceConfigManager() {
+
+	// Destroy message bus manager
+	mb::MessageBusManager::destroy();
 }
 
 void ServiceConfigManager::addBeginConfigElementBinding(BeginConfigBinding* binding) {
@@ -149,10 +223,54 @@ bool ServiceConfigManager::background() {
 	return true;
 }
 
-void ServiceConfigManager::addConfig(const char* uri, int refresh) {
+void ServiceConfigManager::monitorConfigUri(const char* uri, int refresh) {
 }
 
-void ServiceConfigManager::loadConfig(const char* data) {
+void ServiceConfigManager::loadConfigFile(const char* fileName) {
+
+	TRACE("Loading service configuration file '%s'.", fileName);
+
+	boost::iostreams::filtering_istream input;
+	input.push(boost::iostreams::regex_filter(__tokenPattern, TokenResolver(&m_tokens, m_tokenCallback)));
+	input.push(boost::iostreams::file_source(fileName));
+
+	parseConfig(input);
+}
+
+void ServiceConfigManager::loadConfigData(const void* data, int len) {
+}
+
+void ServiceConfigManager::parseConfig(boost::iostreams::filtering_istream& input) {
+
+    try {
+
+    	ServiceConfigBinder binder;
+        binder.setRoot(this);
+
+        XmlBinder xmlBinder(&binder);
+        char* buffer = (char *) xmlBinder.initialize(BUFFER_SIZE);
+        unsigned int readlen;
+
+    	while ( input.good() ) {
+
+    		input.read(buffer, BUFFER_SIZE);
+    		readlen = input.gcount();
+
+#ifdef LOG_LEVEL_TRACE
+    		std::string filecontent(buffer, readlen);
+        	TRACE("Parsing config data line: %s", filecontent.c_str());
+#endif
+            xmlBinder.parse(readlen, !input.good());
+    	}
+
+#ifdef LOG_LEVEL_TRACE
+    	MessageBusManager::instance()->debug("Message bus state after loading/refreshing config: ");
+#endif
+
+    } catch (CException* e) {
+
+        ERROR("Exception parsing service config: %s", e->getMessage());
+    }
 }
 
 } /* namespace mb */

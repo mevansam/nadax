@@ -23,18 +23,50 @@
 #include <stdio.h>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <sstream>
 
 #include <boost/test/unit_test.hpp>
+#include <boost/iostreams/device/file.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/regex.hpp>
+#include "boost/regex.hpp"
 
 #include "ServiceConfigManager.h"
 #include "CurlHttpService.h"
 
+#define XML_PARSE_TEST  "./data/service_config_test.xml"
+
+struct TokenLookup {
+        std::string operator()(const boost::match_results<const char*>& match)
+        {
+        	std::cout << "Match -- " << match[0] << std::endl;
+            return std::string("[foo]");
+        }
+    };
 
 BOOST_AUTO_TEST_CASE( service_config_test ) {
 
-	std::cout << "Begin service config test..." /*<< _curlHttpServiceInit*/ << std::endl;
-
+	std::cout << "Begin service config test..." << std::endl;
 	mb::ServiceConfigManager::initialize();
-//	std::cout << "Touch..." << mb::ServiceConfigManager::touch() << std::endl;
+
+	mb::ServiceConfigManager* manager = mb::ServiceConfigManager::instance();
+
+	manager->addToken("LOGIN", "http:://login-test/");
+	manager->loadConfigFile(XML_PARSE_TEST);
+
+//	boost::regex tokenPattern("\\$\\{[-+_a-zA-Z0-9]+\\}");
+//
+//	boost::iostreams::filtering_istream input;
+//	input.push(boost::iostreams::regex_filter(tokenPattern, TokenLookup()));
+//	input.push(boost::iostreams::file_source(XML_PARSE_TEST));
+//
+//	std::string line;
+//	std::cout << "Config file after tokenization..." << std::endl;
+//
+//	while ( input.good() ) {
+//
+//		getline(input, line);
+//		std::cout << line << std::endl;
+//	}
 }

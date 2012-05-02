@@ -57,8 +57,12 @@ public:
 
     static void createService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
     static void initService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
+    static void addHeader(void* binder, const char* element, std::map<std::string, std::string>& attribs);
+    static void addRequestTemplate(void* binder, const char* element, const char* body);
 
 private:
+
+    void log(std::ostream& cout);
 
     std::string m_subject;
 

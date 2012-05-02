@@ -86,7 +86,7 @@ private:
 		static type_name* instance(); \
 	private: \
 		static type_name* _manager; \
-		static boost::mutex _manager_destroy_lock;
+		static boost::mutex _manager_access_lock;
 
 
 #define SINGLETON_MANAGER_IMPLEMENTATION(type_name, exception_name) \
@@ -96,8 +96,9 @@ private:
 		virtual ~exception_name() { } \
 	}; \
 	type_name* type_name::_manager = NULL; \
-	boost::mutex type_name::_manager_destroy_lock; \
+	boost::mutex type_name::_manager_access_lock; \
 	void type_name::initialize() { \
+		boost::mutex::scoped_lock lock(type_name::_manager_access_lock); \
 		if (type_name::_manager) { \
 			TRACE(#type_name " singleton already initialized. Ignoring initialize()"); \
 			return; \
@@ -105,10 +106,11 @@ private:
 		type_name::_manager = new type_name(); \
 	} \
 	void type_name::destroy() { \
-		boost::mutex::scoped_lock lock(type_name::_manager_destroy_lock); \
-		if (type_name::_manager) \
+		boost::mutex::scoped_lock lock(type_name::_manager_access_lock); \
+		if (type_name::_manager) { \
 			delete type_name::_manager; \
 			type_name::_manager = NULL; \
+		} \
 	} \
 	type_name* type_name::instance() { \
 		if (!type_name::_manager) \

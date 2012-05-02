@@ -26,6 +26,7 @@
 #include <sys/time.h>
 #include <string>
 
+#include <sstream>
 #include <list>
 #include <map>
 
@@ -149,6 +150,9 @@ public:
 	};
 
 	struct NameValue {
+
+		NameValue(const std::string& name, const std::string& value)
+			: name(name), value(value) { };
 
 		NameValue(const char* name, const char* value)
 			: name(name), value(value) { };
@@ -746,7 +750,18 @@ public:
 	 */
 	virtual void setBindingConfig(binding::DynaModelBindingConfigPtr bindingConfig) { }
 
+	/* Logs state of the service.
+	 */
+	friend std::ostream &operator<< (std::ostream& cout, const Service& service) {
+		cout << "Service with subject \"" << ((Service *) &service)->getSubject() << ": " << std::endl;
+		((Service *) &service)->log(cout);
+		return cout;
+	}
+
 protected:
+
+	virtual void log(std::ostream& cout) {
+	}
 
 	void initMessage( Message* message,
 		Message::MessageType type = Message::MSG_P2P,

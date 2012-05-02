@@ -40,6 +40,8 @@
 #include <string>
 #include <vector>
 
+#include "boost/iostreams/filtering_stream.hpp"
+
 #include "Manager.h"
 #include "DataBinder.h"
 #include "Service.h"
@@ -71,7 +73,7 @@
 #define STATIC_INIT_CALL(className) \
 	static bool _init##className##Result = className::__static_init();
 #define STATIC_INIT_NULL_IMPL(className) \
-	bool className::_static_init() { return true; }
+	bool className::_static_init() { _init##className##Result = false; return true; }
 
 /** @} */
 
@@ -94,7 +96,7 @@
 
 namespace mb {
 
-typedef void (*GetTokenValue)(const char* name, std::ostringstream& output); /**< @brief Callback to retrieve the value of a ${token} present in a configuration */
+typedef void (*TokenResolverCallback)(const char* name, std::string& output); /**< @brief Callback to retrieve the value of a ${token} present in a configuration */
 
 /**
  * @class ServiceConfigManager "ServiceConfigManager.h"
@@ -114,14 +116,42 @@ public:
 	virtual ~ServiceConfigManager();
 
 	/**
-	 * Add a configuration URI to be loaded.
+	 * Set callback function to retrieve a token value. If a
+	 * token lookup map is also provided then this callback
+	 * is called only if the token does not exist in the map.
 	 */
-	void addConfig(const char* uri, int refresh = -1);
+	void setTokenResolverCallback(TokenResolverCallback tokenCallback) {
+		m_tokenCallback = tokenCallback;
+	}
 
 	/**
-	 * Load configuration data from a string.
+	 * Copies a collection of tokens from a map.
 	 */
-	void loadConfig(const char* data);
+	void setTokenLookupMap(const boost::unordered_map<std::string, std::string>& tokens) {
+		m_tokens.insert(tokens.begin(), tokens.end());
+	}
+
+	/**
+	 * Adds a token to the token lookup map
+	 */
+	void addToken(const char* name, const char* value) {
+		m_tokens[name] = value;
+	}
+
+	/**
+	 * Add a configuration URI to be loaded.
+	 */
+	void monitorConfigUri(const char* uri, int refresh = -1);
+
+	/**
+	 * Load configuration data from a file.
+	 */
+	void loadConfigFile(const char* fileName);
+
+	/**
+	 * Load configuration data from a buffer.
+	 */
+	void loadConfigData(const void* data, int len);
 
 	/**
 	 * Adds a begin config element binding trigger.
@@ -142,10 +172,15 @@ protected:
 
 private:
 
+	void parseConfig(boost::iostreams::filtering_istream& input);
+
 	boost::unordered_map<std::string, boost::shared_ptr<Service> > m_services;
 
 	static std::vector<BeginConfigBinding*> _beginConfigBindings;
 	static std::vector<EndConfigBinding*> _endConfigBindings;
+
+	TokenResolverCallback m_tokenCallback;
+	boost::unordered_map<std::string, std::string> m_tokens;
 
 	friend class ServiceConfigBinder;
 };
@@ -194,7 +229,7 @@ private:
 	std::string m_pathStr;
 	binding::BeginElementCallback m_callback;
 
-	friend class ServiceConfigManager;
+	friend class ServiceConfigBinder;
 };
 
 /**
@@ -213,7 +248,7 @@ private:
 	std::string m_pathStr;
 	binding::EndElementCallback m_callback;
 
-	friend class ServiceConfigManager;
+	friend class ServiceConfigBinder;
 };
 
 

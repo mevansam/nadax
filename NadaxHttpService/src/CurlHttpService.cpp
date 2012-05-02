@@ -34,8 +34,9 @@ CurlHttpService::CurlHttpService(const std::string& subject, const std::string& 
 	m_url = url;
 
     m_streamDoNotSnap = CSTR_TRUE;
-    m_subscribeAndSnap =false;
+
     m_subscriptionEnabled = false;
+    m_subscribeAndSnap =false;
 }
 
 CurlHttpService::~CurlHttpService() {
@@ -52,6 +53,54 @@ void CurlHttpService::addEnvVars(std::list<Message::NameValue>& envVars) {
 void CurlHttpService::execute(MessagePtr message, std::string& request) {
 }
 
+void CurlHttpService::log(std::ostream& cout) {
+
+	cout << "\tURL - " << m_url << std::endl;
+	cout << "\tTimeout - " << m_timeout << std::endl;
+
+	cout << "\tHTTP Method - ";
+	switch (m_method) {
+		case http::HttpMessage::GET:
+			cout << "GET";
+			break;
+		case http::HttpMessage::POST:
+			cout << "POST";
+			break;
+		default:
+			cout << "UNKNOWN";
+			break;
+	}
+	cout << std::endl;
+
+	cout << "\tContent Type - ";
+	switch (m_contentType) {
+		case Message::CNT_XML:
+			cout << "text/xml";
+			break;
+		case Message::CNT_JSON:
+			cout << "application/json";
+			break;
+		default:
+			cout << "UNKNOWN";
+			break;
+	}
+	cout << std::endl;
+
+	cout << "\tSubscription enabled - " << (m_subscriptionEnabled ? 'Y' : 'N') << std::endl;
+	cout << "\tSubscribe and snap - " << (m_subscribeAndSnap ? 'Y' : 'N') << std::endl;
+	cout << "\tSnap override - " << m_streamDoNotSnap << std::endl;
+
+	cout << "\tHeaders - " << std::endl;
+	for (std::list<Message::NameValue>::iterator i = m_headers.begin(); i != m_headers.end(); i++) {
+		cout << "\t\t" << i->value << '=' << i->name << std::endl;
+	}
+
+	cout << std::endl;
+	cout << "**** Begin Request Template =>" << std::endl;
+	cout << m_template << std::endl;
+	cout << "<= End Request Template ****" << std::endl << std::endl;
+}
+
 // Configuration callbacks
 
 ADD_BEGIN_CONFIG_BINDING(createService, "messagebus-config/service", CurlHttpService::createService);
@@ -63,7 +112,7 @@ void CurlHttpService::createService(void* binder, const char* element, std::map<
     std::string serviceUrl = attribs["url"];
     std::string serviceType = attribs["type"];
 
-    if (serviceType == "http") {
+    if (serviceType == "curlhttp") {
 
     	TRACE("Found CURL HTTP service configuration '%s' for url '%s'.", serviceName.c_str(), serviceUrl.c_str());
     	dataBinder->addService(new CurlHttpService(serviceName, serviceUrl));
@@ -92,6 +141,24 @@ void CurlHttpService::initService(void* binder, const char* element, std::map<st
     		contentType == "text/xml" ? Message::CNT_XML :
     		contentType == "application/json" ? Message::CNT_JSON : Message::CNT_UNKNOWN );
     }
+}
+
+ADD_BEGIN_CONFIG_BINDING(addHeader, "messagebus-config/service/headers/header", CurlHttpService::addHeader);
+void CurlHttpService::addHeader(void* binder, const char* element, std::map<std::string, std::string>& attribs) {
+
+    GET_BINDER(mb::ServiceConfig);
+    CurlHttpService* service = (CurlHttpService *) dataBinder->getService();
+
+    service->m_headers.push_back(Message::NameValue(attribs["name"], attribs["value"]));
+}
+
+ADD_END_CONFIG_BINDING(addRequestTemplate, "messagebus-config/service/requestTemplate", CurlHttpService::addRequestTemplate);
+void CurlHttpService::addRequestTemplate(void* binder, const char* element, const char* body) {
+
+    GET_BINDER(mb::ServiceConfig);
+    CurlHttpService* service = (CurlHttpService *) dataBinder->getService();
+
+    service->m_template = body;
 }
 
 

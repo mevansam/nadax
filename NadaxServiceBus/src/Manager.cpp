@@ -42,14 +42,9 @@ Manager::~Manager() {
 
 void Manager::destroy() {
 
-	std::list<Manager*>::iterator manager = Manager::_managers.begin();
-	std::list<Manager*>::iterator end = Manager::_managers.end();
+	while (Manager::_managers.size()) {
 
-	while (manager != end) {
-
-		Manager* temp = *manager;
-		manager++;
-
+		Manager* temp = Manager::_managers.front();
 		delete temp;
 	}
 }
