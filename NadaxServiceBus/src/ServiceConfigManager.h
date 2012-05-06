@@ -69,7 +69,12 @@
 
 namespace mb {
 
-typedef void (*TokenResolverCallback)(const char* name, std::string& output); /**< @brief Callback to retrieve the value of a ${token} present in a configuration */
+/**
+ * @brief Callback to retrieve the value of a ${token} present in a configuration.
+ * If a token value for the given name is available then the function should return
+ * true.
+ */
+typedef bool (*TokenResolverCallback)(const std::string& name, std::string& value);
 
 /**
  * @class ServiceConfigManager "ServiceConfigManager.h"
@@ -89,7 +94,7 @@ public:
 	virtual ~ServiceConfigManager();
 
 	/**
-	 * Set callback function to retrieve a token value. If a
+	 * @brief Set callback function to retrieve a token value. If a
 	 * token lookup map is also provided then this callback
 	 * is called only if the token does not exist in the map.
 	 */
@@ -98,41 +103,46 @@ public:
 	}
 
 	/**
-	 * Copies a collection of tokens from a map.
+	 * @brief Copies a collection of tokens from a map.
 	 */
 	void setTokenLookupMap(const boost::unordered_map<std::string, std::string>& tokens) {
 		m_tokens.insert(tokens.begin(), tokens.end());
 	}
 
 	/**
-	 * Adds a token to the token lookup map
+	 * @brief Adds a token to the token lookup map
 	 */
 	void addToken(const char* name, const char* value) {
 		m_tokens[name] = value;
 	}
 
 	/**
-	 * Add a configuration URI to be loaded.
+	 * @brief Adds a token to the token lookup map
+	 */
+	bool lookupTokenValue(const std::string& name, std::string& value);
+
+	/**
+	 * @brief Add a configuration URI to be loaded.
 	 */
 	void monitorConfigUri(const char* uri, int refresh = -1);
 
 	/**
-	 * Load configuration data from a file.
+	 * @brief Load configuration data from a file.
 	 */
 	void loadConfigFile(const char* fileName);
 
 	/**
-	 * Load configuration data from a buffer.
+	 * @brief Load configuration data from a buffer.
 	 */
 	void loadConfigData(const void* data, int len);
 
 	/**
-	 * Adds a begin config element binding trigger.
+	 * @brief Adds a begin config element binding trigger.
 	 */
 	static void addBeginConfigElementBinding(BeginConfigBinding* binding);
 
 	/**
-	 * Adds an end config element binding trigger.
+	 * @brief Adds an end config element binding trigger.
 	 */
 	static void addEndConfigElementBinding(EndConfigBinding* binding);
 
@@ -159,6 +169,23 @@ private:
 };
 
 STATIC_INIT_CALL(ServiceConfigManager)
+
+/**
+ * @brief Token lookup via ServiceConfigManager token references.
+ */
+inline bool ServiceConfigManager::lookupTokenValue(const std::string& name, std::string& value) {
+
+	boost::unordered_map<std::string, std::string>::iterator token = m_tokens.find(name);
+	if (token != m_tokens.end()) {
+		value = token->second;
+		return true;
+	}
+
+	if (m_tokenCallback) {
+		return m_tokenCallback(name, value);
+	}
+	return false;
+}
 
 /**
  * @class ServiceConfig "ServiceConfigManager.h"

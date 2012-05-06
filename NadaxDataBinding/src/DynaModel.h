@@ -30,8 +30,9 @@
 
 #include "boost/shared_ptr.hpp"
 
-#include "DataBinder.h"
+#include "objectpool.h"
 
+#include "DataBinder.h"
 
 namespace binding {
 
@@ -227,6 +228,38 @@ private:
     std::string m_lastBoundPath;
     
     friend class DynaModelBinding;
+};
+
+class DynaModelBinderPool : public ObjectPool<DynaModelBinder> {
+
+public:
+
+	DynaModelBinderPool() {
+	};
+
+	virtual ~DynaModelBinderPool() {
+	};
+
+	void setDynaModelBindingConfig(DynaModelBindingConfigPtr bindingConfig) {
+		m_bindingConfig = bindingConfig;
+	}
+
+	bool hasDynaModelBindingConfig() {
+		return (m_bindingConfig.get() != NULL);
+	}
+
+protected:
+
+	virtual DynaModelBinder* create() {
+		return new DynaModelBinder(m_bindingConfig.get());
+	}
+
+	virtual void passivate(DynaModelBinder* binder) {
+		binder->reset();
+	};
+
+private:
+	DynaModelBindingConfigPtr m_bindingConfig;
 };
 
 

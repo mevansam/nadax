@@ -22,6 +22,9 @@
 
 #include "HttpService.h"
 
+#include "DynaModel.h"
+#include "MessageBusManager.h"
+
 #define TOKEN_BEGIN  "{{"
 #define TOKEN_END    "}}"
 
@@ -97,7 +100,6 @@ void HttpService::intialize() {
     TRACE(output.str().c_str());
 #endif
 
-	this->addEnvVars(m_envVars);
 	this->start();
 }
 
@@ -108,49 +110,199 @@ void HttpService::destroy() {
 
 void HttpService::onMessage(MessagePtr message) {
     
-    try {
-        
-        http::HttpMessage* httpMessage = (http::HttpMessage *) message.get();
+    MessageBusManager* manager = MessageBusManager::instance();
+    http::HttpMessage* httpMessage = (http::HttpMessage *) message.get();
 
-        NameValueMap variables;
-        std::list<Message::NameValue>::iterator i;
+    P2PMessage::ControlAction controlAction = httpMessage->getControlAction();
 
-        for (i = m_envVars.begin(); i != m_envVars.end(); i++) {
-            variables[i->name] = i->value;
-        }
+    bool isControlNone = (controlAction == P2PMessage::NONE);
+    bool isSubscription = (httpMessage->getType() == Message::MSG_P2P_SUB);
+    bool isFirstPost = (httpMessage->getPostCount() == 0);
 
-        std::list<Message::NameValue> params = httpMessage->getParams();
-        for (i = params.begin(); i != params.end(); i++) {
-            variables[i->name] = i->value;
-        }
+    if (!m_subscriptionEnabled && !isFirstPost)
+        return;
 
-        std::list<Message::NameValue> tmplVars = httpMessage->getTmplVars();
-        for (i = tmplVars.begin(); i != tmplVars.end(); i++) {
-            variables[i->name] = i->value;
-        }
+    const char* respSubject = (httpMessage->getRespSubject().length() > 0 ? httpMessage->getRespSubject().c_str() : NULL);
+
+    MessagePtr completion;
+
+	if (isSubscription && m_streamSubject.length() > 0) {
+
+		// Send a subscription call to the streaming service
+
+		MessagePtr subRequest = manager->createMessage(m_streamSubject.c_str());
+		NameValueMap& metaData = subRequest->getMetaData();
+		metaData[DO_NOT_SNAP] = m_streamDoNotSnap;
+
+		if (respSubject)
+			subRequest->setRespSubject(respSubject);
+		else
+			subRequest->setRespSubject(message->getSubject().c_str());
+
+		TRACE("Initiating subscription on service '%s'.", subRequest->getSubject().c_str());
+
+		if (m_streamKey.length() > 0) {
+
+			std::list<Message::NameValue> params = httpMessage->getParams();
+			std::list<Message::NameValue>::iterator param;
+
+			for (param = params.begin(); param != params.end(); param++) {
+
+				if (m_streamKey == param->name) {
+
+					TRACE("The subscription key data is: %s", param->value.c_str());
+
+					subRequest->setData(param->name.c_str(), (void *) param->value.c_str());
+					break;
+				}
+			}
+		}
+
+		((P2PMessage *) subRequest.get())->setControlAction(controlAction);
+
+		if (!isFirstPost || !isControlNone || m_subscribeAndSnap) {
+
+			MessagePtr subResponse = manager->sendMessage(subRequest);
+			if (!subResponse->getError()) {
+
+				Service::initMessage(
+					message.get(),
+					subResponse.get(),
+					subResponse->getType(),
+					subResponse->getContentType(),
+					respSubject );
+
+				if (m_subscribeAndSnap) {
+
+					// If subscription just activated then continue and snap, else
+					// return as subscription will stream subsequent updates.
+					if (subResponse->getMetaData()[SUBSCRIPTION_RESULT_CODE] == SUBSCRIPTION_RESULT_ACTIVE) {
+
+						POST_RESPONSE(subResponse, message);
+						return;
+					}
+
+				} else {
+
+					TRACE( "Streaming subscription is active. Continuing without polling for service '%s'",
+						subRequest->getSubject().c_str() );
+
+					POST_RESPONSE(subResponse, message);
+					return;
+				}
+			}
+
+		} else {
+
+			// If this is the first message and not a control message
+			// and "subscribe asap" is false, then the subcription
+			// request to the streaming service should be sent
+			// after the snap request/response is completed. So
+			// the message is passed on to the http response handler
+			// which posts this message once the http response
+			// is complete.
+
+			completion = subRequest;
+		}
+	}
+
+	// Only messages that do not have a control action associated
+	// with them should continue to be processed as a request response,
+	// as control actions are subscription specific.
+	if (!isControlNone)
+		return;
+
+	MessagePtr response(new StreamMessage());
+	Service::initMessage(
+		message.get(),
+		response.get(),
+		Message::MSG_RESP_STREAM,
+		Message::CNT_UNKNOWN,
+		respSubject );
+
+	NameValueMap& metaData = response->getMetaData();
+
+	if (Service::hasDynaModelBindingConfig() && message->hasBinder() == 1) {
+
+		metaData[DATA_IS_DYNA_MODEL] = "true";
+
+		// Sets up clean up of data when message is deleted
+		Datum<binding::DynaModel> datum(response);
+
+	} else
+		metaData[DATA_IS_DYNA_MODEL] = "false";
+
+	metaData[REQUEST_ID] = httpMessage->getId();
+
+	if (isSubscription && isFirstPost) {
+		// Return a subscription ID only with the first
+		// response message. The receiver needs to keep
+		// track of this so they can control subscriptions.
+		metaData[SUBSCRIPTION_ID] = httpMessage->getId();
+	}
+
+	if (POST_RESPONSE(response, message) > 0) {
 
         std::ostringstream output;
-        
-        bool isVar = false;
-        std::list<std::string>::iterator j;
-        for (j = m_templateTokens.begin(); j != m_templateTokens.end(); j++) {
-            
-            if (isVar)
-                output << variables[*j];
-            else
-                output << *j;
-            
-            isVar = !isVar;
-        }
 
-        std::string result(output.str());
-        this->execute(message, result);
-        
-    } catch (...) {
-        
-        ERROR( "Caught unknown exception while handling message for HTTP service with subject '%s'.",
-            this->getSubject() );
-    }
+        // Build request body
+
+		try {
+
+            NameValueMap variables;
+            std::list<Message::NameValue>::iterator i;
+
+            std::list<Message::NameValue> params = httpMessage->getParams();
+            for (i = params.begin(); i != params.end(); i++) {
+                variables[i->name] = i->value;
+            }
+
+            std::list<Message::NameValue> tmplVars = httpMessage->getTmplVars();
+            for (i = tmplVars.begin(); i != tmplVars.end(); i++) {
+                variables[i->name] = i->value;
+            }
+
+            ServiceConfigManager* scm = ServiceConfigManager::instance();
+
+            bool isVar = false;
+            std::list<std::string>::iterator j;
+            for (j = m_templateTokens.begin(); j != m_templateTokens.end(); j++) {
+
+                if (isVar) {
+
+                	if (variables.find(*j) != variables.end()) {
+
+                		output << variables[*j];
+
+                	} else {
+
+                		std::string value;
+                		if (scm->lookupTokenValue(*j, value))
+                    		output << value;
+                		else
+                			output << TOKEN_BEGIN << *j << TOKEN_END;
+                	}
+
+                } else
+                    output << *j;
+
+                isVar = !isVar;
+            }
+
+	    } catch (...) {
+
+	        ERROR( "Error while formating request body for HTTP service with subject '%s'.",
+	            this->getSubject() );
+
+            response->setError(Message::ERR_CONNECTION_ERROR, 1, "Error formatting request body.");
+            SEND_DATA(response, NULL, 0);
+	    }
+
+		std::string result(output.str());
+		this->execute(message, result);
+
+	} else
+		SEND_DATA(response, NULL, 0);
 }
 
 void HttpService::log(std::ostream& cout) {
@@ -194,7 +346,7 @@ void HttpService::log(std::ostream& cout) {
 
 	cout << "\tHeaders - " << std::endl;
 	for (std::list<Message::NameValue>::iterator i = m_headers.begin(); i != m_headers.end(); i++) {
-		cout << "\t\t" << i->value << '=' << i->name << std::endl;
+		cout << "\t\t" << i->name << '=' << i->value << std::endl;
 	}
 
 	cout << std::endl;

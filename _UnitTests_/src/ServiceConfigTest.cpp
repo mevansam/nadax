@@ -54,19 +54,4 @@ BOOST_AUTO_TEST_CASE( service_config_test ) {
 
 	manager->addToken("LOGIN", "http:://login-test/");
 	manager->loadConfigFile(XML_PARSE_TEST);
-
-//	boost::regex tokenPattern("\\$\\{[-+_a-zA-Z0-9]+\\}");
-//
-//	boost::iostreams::filtering_istream input;
-//	input.push(boost::iostreams::regex_filter(tokenPattern, TokenLookup()));
-//	input.push(boost::iostreams::file_source(XML_PARSE_TEST));
-//
-//	std::string line;
-//	std::cout << "Config file after tokenization..." << std::endl;
-//
-//	while ( input.good() ) {
-//
-//		getline(input, line);
-//		std::cout << line << std::endl;
-//	}
 }

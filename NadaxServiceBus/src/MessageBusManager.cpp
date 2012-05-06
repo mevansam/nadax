@@ -748,13 +748,13 @@ bool MessageBusManager::unmarshalMessage(void* context, mb::MessagePtr message, 
                     THROW(MessageBusException, EXCEP_MSSG(RESPONSE_BINDER_IS_LOCKED)); 
                 
                 switch (cntType) {
-                        
-                        //case Message::ContentType::JSON:
-                        //
-                        //	response->unmarshaller = new parser::JsonBinder(dataBinder);
-                        //	response->unmarshaller->initialize();
-                        //  TRACE("Unmarshalling json data stream for response message with subject '%s'.", response->message->getSubject());
-                        //	break;
+
+					//case Message::ContentType::JSON:
+					//
+					//	response->unmarshaller = new parser::JsonBinder(dataBinder);
+					//	response->unmarshaller->initialize();
+					//  TRACE("Unmarshalling json data stream for response message with subject '%s'.", response->message->getSubject());
+					//	break;
                         
                     case Message::CNT_XML:
                     default:

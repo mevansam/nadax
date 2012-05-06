@@ -42,9 +42,6 @@ mb::Message* CurlHttpService::createMessage() {
 	return NULL;
 }
 
-void CurlHttpService::addEnvVars(std::list<Message::NameValue>& envVars) {
-}
-
 void CurlHttpService::execute(MessagePtr message, std::string& request) {
 }
 

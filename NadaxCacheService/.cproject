@@ -40,12 +40,15 @@
 								<option id="gnu.cpp.compiler.macosx.lib.debug.option.debugging.level.50040366" name="Debug Level" superClass="gnu.cpp.compiler.macosx.lib.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.other.other.224095802" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1283739532" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="/opt/local/include"/>
+									<listOptionValue builtIn="false" value="/usr/include"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.1964192514" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>
@@ -59,12 +62,15 @@
 								<option id="gnu.c.compiler.option.misc.other.1505262917" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<option id="gnu.c.compiler.option.include.files.904273318" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
 								<option id="gnu.c.compiler.option.include.paths.1468179565" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/opt/local/include"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;/${ProjName}/src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="/opt/local/include"/>
+									<listOptionValue builtIn="false" value="/usr/include"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1194902002" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIX"/>

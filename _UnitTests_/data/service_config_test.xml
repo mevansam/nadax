@@ -13,7 +13,7 @@
 	        httpMethod="POST"/>
         
         <headers>
-            <header name="TEST_HEADER" value="Test Header Value"/>
+            <header name="TEST_HEADER" value="Token '${LOGIN}' and ${no_token}"/>
 		</headers>
         
         <requestTemplate>

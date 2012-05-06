@@ -573,10 +573,6 @@ void DynaModelBinder::beginBinding() {
 void DynaModelBinder::endBinding() {
     
 	finalizeListElemProcessing();
-	while (!m_bindingNode.empty())
-    {
-		m_bindingNode.pop();
-    }
 }
 
 void DynaModelBinder::reset() {

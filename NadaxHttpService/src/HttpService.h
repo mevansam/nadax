@@ -184,8 +184,6 @@ public:
     virtual const char* getTemplate() {
         return m_template.c_str();
     }
-
-    virtual void addEnvVars(std::list<Message::NameValue>& envVars) = 0;
     
     virtual void execute(MessagePtr message, std::string& request) = 0;
 
@@ -207,8 +205,6 @@ protected:
     Message::ContentType m_contentType;
 
     std::string m_template;
-
-    std::list<Message::NameValue> m_envVars;
     std::list<std::string> m_templateTokens;
 
     std::list<Message::NameValue> m_headers;

@@ -123,7 +123,7 @@ public:
 
         Service* service = dataBinder->getService();
         if (service)
-        	service->setBindingConfig(dataBinder->m_bindingConfig);
+        	service->setDynaModelBindingConfig(dataBinder->m_bindingConfig);
 
         dataBinder->m_bindingConfig.reset();
     }
@@ -162,23 +162,18 @@ struct TokenResolver {
 
 		std::string name(match[0].first + 2, match[0].length() - 3);
 
-		boost::unordered_map<std::string, std::string>::iterator token = m_tokens->find(name);
-		if (token != m_tokens->end())
-			return token->second;
-
 		std::string value;
-		if (m_callback)
-			m_callback(name.c_str(), value);
-		return value;
+		if (m_manager->lookupTokenValue(name, value))
+			return value;
+		else
+			return std::string(match[0].first, match[0].length());
 	}
 
-	TokenResolver(boost::unordered_map<std::string, std::string>* tokens, TokenResolverCallback callback) {
-		m_tokens = tokens;
-		m_callback = callback;
+	TokenResolver(ServiceConfigManager* manager) {
+		m_manager = manager;
 	}
 
-	TokenResolverCallback m_callback;
-	boost::unordered_map<std::string, std::string>* m_tokens;
+	ServiceConfigManager* m_manager;
 };
 
 
@@ -233,7 +228,7 @@ void ServiceConfigManager::loadConfigFile(const char* fileName) {
 	TRACE("Loading service configuration file '%s'.", fileName);
 
 	boost::iostreams::filtering_istream input;
-	input.push(boost::iostreams::regex_filter(__tokenPattern, TokenResolver(&m_tokens, m_tokenCallback)));
+	input.push(boost::iostreams::regex_filter(__tokenPattern, TokenResolver(this)));
 	input.push(boost::iostreams::file_source(fileName));
 
 	parseConfig(input);

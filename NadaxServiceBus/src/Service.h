@@ -33,6 +33,7 @@
 #include "boost/shared_ptr.hpp"
 #include "boost/unordered_map.hpp"
 #include "boost/unordered_set.hpp"
+#include "boost/pool/object_pool.hpp"
 
 #include "log.h"
 #include "uuid.h"
@@ -50,6 +51,12 @@
 #define DATA_IS_DYNA_MODEL  "IS_DYNA_MODEL"
 #define STREAMING_UPDATE    "IS_STREAMING"
 #define REQUEST_ID          "REQUEST_ID"
+
+#define DO_NOT_SNAP  "DO_NOT_SNAP"
+
+#define SUBSCRIPTION_RESULT_CODE    "subResult"
+#define SUBSCRIPTION_RESULT_INITIAL "initial"
+#define SUBSCRIPTION_RESULT_ACTIVE  "active"
 
 #define POST_RESPONSE(response, message) \
     MessageBusManager::instance()->postMessage( response, \
@@ -754,10 +761,30 @@ public:
 	virtual void resume(std::istream* input = NULL) = 0;
 
 	/* Dynamic binding configuration for services
-	 * that a configured for binding using a xml
-	 * binding rule set.
+	 * that a configured for binding using an xml
+	 * or json binding rule set.
 	 */
-	virtual void setBindingConfig(binding::DynaModelBindingConfigPtr bindingConfig) { }
+	void setDynaModelBindingConfig(binding::DynaModelBindingConfigPtr bindingConfig) {
+		m_binderPool.setDynaModelBindingConfig(bindingConfig);
+	}
+
+	/* Returns if the service is configured with
+	 * a DynaModel binding configuration ruleset.
+	 */
+	bool hasDynaModelBindingConfig() {
+		return m_binderPool.hasDynaModelBindingConfig();
+	}
+
+	/* Retrieves an instance of a DynaModelBinder from the pool.
+	 */
+	boost::shared_ptr<binding::DynaModelBinder> getDynaModelBinder() {
+		return m_binderPool.getObject();
+	}
+	/* Returns an instance of DynaModelBinder to the pool.
+	 */
+	void returnDynaModelBinder(boost::shared_ptr<binding::DynaModelBinder> binder) {
+		m_binderPool.returnObject(binder);
+	}
 
 	/* Logs state of the service.
 	 */
@@ -805,6 +832,8 @@ protected:
 private:
 
 	boost::unordered_set<std::string> m_types;
+
+	binding::DynaModelBinderPool m_binderPool;
 };
 
 

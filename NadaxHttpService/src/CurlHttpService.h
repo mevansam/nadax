@@ -41,7 +41,6 @@ public:
 	virtual ~CurlHttpService();
 
     Message* createMessage();
-    void addEnvVars(std::list<Message::NameValue>& envVars);
     void execute(MessagePtr message, std::string& request);
 
     // XML Configuration bindings
