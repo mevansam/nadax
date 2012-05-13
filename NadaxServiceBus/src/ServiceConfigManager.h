@@ -48,8 +48,6 @@
 #include "DataBinder.h"
 #include "Service.h"
 
-/** @} */
-
 /** @defgroup configBindings Configuration Binding Macros
  *
  * The binding macros should be included in service implementation

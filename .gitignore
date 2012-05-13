@@ -9,6 +9,10 @@
 [Dd]ebug*/
 [Rr]elease*/
 
+Doxyfile
+.settings/
+doc/
+
 _UnitTests_/data/cacerts
 _UnitTests_/data/certs.zip
 

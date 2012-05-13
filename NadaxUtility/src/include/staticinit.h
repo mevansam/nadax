@@ -24,7 +24,9 @@
 #define STATICINIT_H_
 
 
-/** @defgroup Class/Service static initializing macros
+/** @defgroup static Static initialization
+ *
+ * @brief Macros for initializing the static state of a class.
  *
  * These macros should be defined within the class declaration, outside the
  * class in the header and within the class implementation, to ensure that
@@ -54,5 +56,6 @@
 #define STATIC_INIT_NULL_IMPL(className) \
 	bool className::_static_init() { _init##className##Result = false; return true; }
 
+/** }@ */
 
 #endif /* STATICINIT_H_ */

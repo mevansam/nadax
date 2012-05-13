@@ -22,9 +22,82 @@
 
 #include "CurlHttpService.h"
 
+#include "curl/curl.h"
+
+#include "staticinit.h"
+#include "log.h"
+#include "executor.h"
+
+#include "OpenSSLInit.h"
+#include "HttpService.h"
+
 
 namespace mb {
 	namespace http {
+
+
+class HttpConnection {
+
+public:
+	HttpConnection() {
+
+		m_curlHandle = curl_easy_init();
+	}
+
+	~HttpConnection() {
+
+		if (m_curlHandle)
+			curl_easy_cleanup(m_curlHandle);
+	}
+
+	void initialize() {
+
+	}
+
+	void operator()() {
+
+	}
+
+	void finalize() {
+
+	}
+
+public:
+	CURL* m_curlHandle;
+};
+
+
+class HttpConnectionPool : public ObjectPool<HttpConnection> {
+
+public:
+	virtual ~HttpConnectionPool() {
+	}
+
+protected:
+
+	virtual HttpConnection* create() {
+
+		HttpConnection* connection = new HttpConnection();
+		if (!connection->m_curlHandle) {
+
+			FATAL("Unable to create cURL handle.");
+			delete connection;
+			return NULL;
+
+		} else
+			return connection;
+
+	}
+
+	virtual void activate(HttpConnection* object) {
+
+	}
+
+	virtual void passivate(HttpConnection* object) {
+
+	}
+};
+
 
 STATIC_INIT_NULL_IMPL(CurlHttpService)
 

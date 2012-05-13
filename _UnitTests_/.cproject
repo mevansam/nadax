@@ -33,9 +33,12 @@
 									<listOptionValue builtIn="false" value="sqlite3"/>
 									<listOptionValue builtIn="false" value="soci_core"/>
 									<listOptionValue builtIn="false" value="soci_sqlite3"/>
+									<listOptionValue builtIn="false" value="boost_exception"/>
+									<listOptionValue builtIn="false" value="boost_system"/>
 									<listOptionValue builtIn="false" value="boost_thread"/>
 									<listOptionValue builtIn="false" value="boost_regex"/>
 									<listOptionValue builtIn="false" value="boost_unit_test_framework"/>
+									<listOptionValue builtIn="false" value="NadaxUtility"/>
 									<listOptionValue builtIn="false" value="NadaxDataBinding"/>
 									<listOptionValue builtIn="false" value="NadaxServiceBus"/>
 									<listOptionValue builtIn="false" value="NadaxHttpService"/>
@@ -66,7 +69,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
@@ -91,7 +93,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/thread}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxDataBinding/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxServiceBus/src}&quot;"/>
@@ -114,7 +115,7 @@
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221.1834455204" name="MockHttpService.h" rcbsApplicability="disable" resourcePath="src/MockHttpService.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="MockHttpService.h|MockHttpService.cpp|MessageBusTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="ServiceConfigTest.cpp|PathTest.cpp|ParserTest.cpp|DataBindingTest.cpp|MockHttpService.h|MockHttpService.cpp|MessageBusTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

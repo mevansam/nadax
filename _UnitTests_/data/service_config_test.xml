@@ -2,6 +2,12 @@
 
 <messagebus-config>
     
+    <curlhttpservice
+        poolSize="5"
+        poolMax="10"
+        concurrency="5"
+        maxCachedConnections="5"/>
+    
     <service
         name="loginService"
         url="${LOGIN}"
