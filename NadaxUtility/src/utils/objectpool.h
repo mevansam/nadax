@@ -106,8 +106,8 @@ private:
  *
  */
 template <class T>
-class ObjectPool
-{
+class ObjectPool {
+
 public:
 
 	/**
@@ -162,7 +162,7 @@ public:
 	 * @param max This is the maximum number of objects that can be pooled and
 	 * 		allocated. If this value is -1 then there is no maximum size limit
 	 * 		and the pool will grow indefinitely.
-	 * 	@param timeout This is the amount of milliseconds to wait for an object
+	 * @param timeout This is the amount of milliseconds to wait for an object
 	 * 		to be returned to the pool if the pool has reached its maximum size.
 	 * 		If this parameter is 0 then this method will return immediately with
 	 * 		an exception. If it is -1 then requesting for an object from a pool
