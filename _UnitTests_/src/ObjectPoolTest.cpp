@@ -43,18 +43,42 @@ public:
 	TestObject() {
 
 		id = _counter++;
-		isValid = true;
+		invalidateOnActivate = false;
+		invalidateOnPassivate = false;
 
 		TRACE("Constructing object: %d", id);
 	}
 
 	virtual ~TestObject() {
 
-		TRACE("Destroying object: %d (%s)", id, (isValid ? "valid" : "invalid"));
+		TRACE( "Destroying object: %d (%s)", id,
+			( invalidateOnActivate ? "invalidated on activate" :
+			invalidateOnPassivate ? "invalidated on passivate" : "value" ) );
+	}
+
+	int getId() {
+		return id;
+	}
+
+	void setInvalidateOnActivate() {
+		invalidateOnActivate = true;
+	}
+
+	bool getInvalidateOnActivate() {
+		return invalidateOnActivate;
+	}
+
+	void setInvalidateOnPassivate() {
+		invalidateOnPassivate = true;
+	}
+
+	bool getInvalidateOnPassivate() {
+		return invalidateOnPassivate;
 	}
 
 	int id;
-	bool isValid;
+	bool invalidateOnActivate;
+	bool invalidateOnPassivate;
 };
 
 class TestObjectPool : public ObjectPool<TestObject> {
@@ -72,18 +96,24 @@ protected:
 	virtual TestObject* create() {
 
 		TestObject* o = new TestObject();;
-		TRACE("Returning new object to be pooled from pool '%s': %p", name.c_str(), o);
+		TRACE("Returning new object to be pooled from pool '%s': %d", name.c_str(), o->getId());
 		return o;
 	}
 
 	virtual void activate(TestObject* object) {
 
-		TRACE("Activating pooled object in pool '%s': %p", name.c_str(), object);
+		TRACE("Activating pooled object in pool '%s': %d", name.c_str(), object->getId());
+
+		if (object->getInvalidateOnActivate())
+			throw _pool_error() << pool_error_msg("Object invalidated on activate.");
 	}
 
 	virtual void passivate(TestObject* object) {
 
-		TRACE("Passivating pooled object in pool '%s': %p", name.c_str(), object);
+		TRACE("Passivating pooled object in pool '%s': %d", name.c_str(), object->getId());
+
+		if (object->getInvalidateOnPassivate())
+			throw _pool_error() << pool_error_msg("Object invalidated on passivate.");
 	}
 
 	virtual void evict() {
@@ -209,6 +239,48 @@ BOOST_AUTO_TEST_CASE( object_pool_test ) {
 	std::cout << "Pause 5 secs." << std::endl;
 	sleep(5);
 	BOOST_REQUIRE_MESSAGE(pool1.getUnallocatedPoolSize() == POOL_SIZE, "Unexpected pool size.");
+
+	std::cout << std::endl << "Returning object (3) to pool2." << std::endl;
+	pool2.returnObject(o[3]); o[3].reset();
+
+	std::cout << std::endl << "Returning invalidated object with id '"
+		<< o[1]->getId() << "' to pool2." << std::endl;
+
+	o[1]->setInvalidateOnActivate();
+	pool2.returnObject(o[1]); o[1].reset();
+
+	sleep(5);
+	BOOST_REQUIRE_MESSAGE(pool2.getUnallocatedPoolSize() == POOL_SIZE, "Unexpected pool size.");
+
+	o[16] = pool2.getObject();
+	o[17] = pool2.getObject();
+
+	sleep(5);
+	BOOST_REQUIRE_MESSAGE(pool2.getUnallocatedPoolSize() == 2, "Unexpected pool size.");
+
+	try {
+
+		std::cout << std::endl << "Attempting to activate an object that should invalidate on activate : " << std::endl;
+		o[18] = pool2.getObject();
+		BOOST_REQUIRE_MESSAGE(false, "Expected invalidate on activate exception was thrown.");
+
+	} catch (boost::exception& e) {
+
+		std::cout << boost::get_error_info<pool_error_msg>(e)->c_str() << std::endl;
+	}
+
+	try {
+
+		std::cout << std::endl << "Attempting to passivate an object '" << o[16]->getId() << "' that should invalidate on passivate : " << std::endl;
+		o[16]->setInvalidateOnPassivate();
+		pool2.returnObject(o[16]);
+		BOOST_REQUIRE_MESSAGE(false, "Expected invalidate on activate exception was thrown.");
+
+	} catch (boost::exception& e) {
+
+		o[16].reset();
+		std::cout << boost::get_error_info<pool_error_msg>(e)->c_str() << std::endl;
+	}
 
 	std::cout << "Pause 5 secs." << std::endl;
 	sleep(5);
