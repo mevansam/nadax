@@ -58,10 +58,10 @@
  *  @{
  */
 
-#define ADD_BEGIN_CONFIG_BINDING(name, path, callback) \
-	static mb::BeginConfigBinding name(path, callback); /**< Adds config binding callback for configuring the start of a config XML element. */
-#define ADD_END_CONFIG_BINDING(name, path, callback) \
-	static mb::EndConfigBinding name(path, callback); /**< Adds config binding callback for configuring the end of a config XML element. */
+#define ADD_BEGIN_CONFIG_BINDING(path, clazz, callback) \
+	static mb::BeginConfigBinding callback(path, clazz::callback); /**< Adds config binding callback for configuring the start of a config XML element. */
+#define ADD_END_CONFIG_BINDING(path, clazz, callback) \
+	static mb::EndConfigBinding callback(path, clazz::callback); /**< Adds config binding callback for configuring the end of a config XML element. */
 
 /** @} */
 

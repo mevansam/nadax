@@ -357,7 +357,7 @@ void HttpService::log(std::ostream& cout) {
 
 // Configuration callbacks
 
-ADD_BEGIN_CONFIG_BINDING(initService, "messagebus-config/service/httpConfig", HttpService::initService);
+ADD_BEGIN_CONFIG_BINDING("messagebus-config/service/httpConfig", HttpService, initService);
 void HttpService::initService(void* binder, const char* element, std::map<std::string, std::string>& attribs) {
 
     GET_BINDER(mb::ServiceConfig);
@@ -385,7 +385,7 @@ void HttpService::initService(void* binder, const char* element, std::map<std::s
     }
 }
 
-ADD_BEGIN_CONFIG_BINDING(addHeader, "messagebus-config/service/headers/header", HttpService::addHeader);
+ADD_BEGIN_CONFIG_BINDING("messagebus-config/service/headers/header", HttpService, addHeader);
 void HttpService::addHeader(void* binder, const char* element, std::map<std::string, std::string>& attribs) {
 
     GET_BINDER(mb::ServiceConfig);
@@ -395,7 +395,7 @@ void HttpService::addHeader(void* binder, const char* element, std::map<std::str
     	((HttpService *) service)->m_headers.push_back(Message::NameValue(attribs["name"], attribs["value"]));
 }
 
-ADD_END_CONFIG_BINDING(addRequestTemplate, "messagebus-config/service/requestTemplate", HttpService::addRequestTemplate);
+ADD_END_CONFIG_BINDING("messagebus-config/service/requestTemplate", HttpService, addRequestTemplate);
 void HttpService::addRequestTemplate(void* binder, const char* element, const char* body) {
 
     GET_BINDER(mb::ServiceConfig);

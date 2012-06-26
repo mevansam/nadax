@@ -28,6 +28,7 @@
 									<listOptionValue builtIn="false" value="minizip"/>
 									<listOptionValue builtIn="false" value="cppunit"/>
 									<listOptionValue builtIn="false" value="ctemplate"/>
+									<listOptionValue builtIn="false" value="curl"/>
 									<listOptionValue builtIn="false" value="expat"/>
 									<listOptionValue builtIn="false" value="crypto"/>
 									<listOptionValue builtIn="false" value="sqlite3"/>
@@ -115,7 +116,7 @@
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.1572835221.1834455204" name="MockHttpService.h" rcbsApplicability="disable" resourcePath="src/MockHttpService.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="ServiceConfigTest.cpp|PathTest.cpp|ParserTest.cpp|DataBindingTest.cpp|MockHttpService.h|MockHttpService.cpp|MessageBusTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="ObjectPoolTest.cpp|PathTest.cpp|ParserTest.cpp|DataBindingTest.cpp|MockHttpService.h|MockHttpService.cpp|MessageBusTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

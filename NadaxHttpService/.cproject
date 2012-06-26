@@ -47,6 +47,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CMOSS_PATH}/bin/certs&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="/usr/include"/>
 								</option>
@@ -69,6 +70,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/network}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/src/utils}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/NadaxUtility/libs/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CMOSS_PATH}/bin/certs&quot;"/>
 									<listOptionValue builtIn="false" value="/opt/local/include"/>
 									<listOptionValue builtIn="false" value="/usr/include"/>
 								</option>

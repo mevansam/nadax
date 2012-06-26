@@ -45,6 +45,7 @@ public:
 
     // XML Configuration bindings
 
+    static void configureServices(void* binder, const char* element, std::map<std::string, std::string>& attribs);
     static void createService(void* binder, const char* element, std::map<std::string, std::string>& attribs);
 
 private:
